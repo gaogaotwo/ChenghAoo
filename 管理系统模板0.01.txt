@@ -14,32 +14,35 @@ struct LNode{
 };
 typedef PtrToAdjVNode List;
 
-stu createStuScore();					//�������� 
-List Add_data();						//���������ڵ� 
-List addToList(List list,List temp);	//ͷ�巨�� 
-void Show_data(stu temp);				//��ʾ���� 
-void Show_Alldata(List list);			//չʾ�������� 
-void inquire(List L);					//��ѯ���� 
-void Modify(List L);					//�޸����� 
-List  Delete(List L);					//ɾ������ 
-void sort(List L);						//���� 
-void menu();							//�˵� 
-void exit();							//�˳� 
-void filewriting(List L);				//�ļ��洢 
-void fileread(List L);					//�ļ���ȡ 
+stu createStuScore();					//创建数据 
+List Add_data();						//添加链表节点 
+List addToList(List list,List temp);	//头插法？ 
+void Show_data(stu temp);				//显示数据 
+void Show_Alldata(List list);			//展示所有数据 
+void inquire(List L);					//查询数据 
+void Modify(List L);					//修改数据 
+List  Delete(List L);					//删除数据 
+void sort(List L);						//排序 
+void menu();							//菜单 
+void exit();							//退出 
+void filewriting(List L);				//文件存储 
+void fileread(List L);					//文件读取
+
+void author(); 
 FILE *fp;
  
 int main()
 {
 	List head=NULL,temp;
 	int choice;
+	author();
 	while(1)
 	{
 		menu();
 		scanf("%d",&choice);
 		switch(choice)
 		{
-		case 1://����ѧ����Ϣ
+		case 1://添加学生信息
 				temp=Add_data();
 				head=addToList(head,temp);
 				break;
@@ -49,7 +52,6 @@ int main()
 		case 3:inquire(head);break;
 
 		case 4:Modify(head);break;
-
 
 		case 5:head=Delete(head);getchar();getchar();break;
 
@@ -68,7 +70,7 @@ stu createStuScore()
 {
 	stu temp;
 
-	printf("����data:\n"); 
+	printf("输入data:\n"); 
 	scanf("%d",&temp.data);
 	printf("name data_\n");
 	scanf("%s",temp.name);	
@@ -87,7 +89,7 @@ List Add_data()
 	return Node;
 }
 
-//��һ���ڵ����ӵ��б���ȥ�������б���ͷָ��
+//将一个节点添加到列表中去，返回列表的头指针
 List addToList(List list,List temp)
 {
 	temp->next=list;
@@ -95,14 +97,14 @@ List addToList(List list,List temp)
 	return list;
 }
 
-//��ʾ��Ϣ
+//显示信息
 void Show_data(stu temp)
 {
-		printf("��������%d   %s\n",temp.data,temp.name);
+		printf("测试数据%d   %s\n",temp.data,temp.name);
 		
 }
 
-//��ʾ����ѧ����Ϣ
+//显示所有学生信息
 void Show_Alldata(List list)
 {
 	
@@ -115,19 +117,19 @@ void Show_Alldata(List list)
 	getchar();getchar();
 }
 
-//��ѯ����
+//查询函数
 void inquire(List L)
 {
 	int i;
 
-	printf("����_____-data\n");
+	printf("测试_____-data\n编号:\n");
 	scanf("%d",&i);
 	
 	while(L!=NULL)
 	{
 		if(i==L->s.data)
 		{
-			printf("����___________data\n");
+			printf("测试___________data\n");
 			Show_data(L->s);
 		}
 		L=L->next;
@@ -135,12 +137,12 @@ void inquire(List L)
 	getchar();getchar();
 }
 
-//�޸ĳ�����
+//修改程序函数
 void Modify(List L)
 {
 	int i;
 	
-	printf("_____________data\n");
+	printf("_____________data\n编号:\n");
 	scanf("%d",&i);
 	while(L!=NULL)
 	{
@@ -151,21 +153,22 @@ void Modify(List L)
 		}
 		L=L->next;
 	}
-	printf("�޸ĳɹ�");
+	printf("修改成功");
 	getchar();getchar();
 }
 
-//ɾ���ɼ�����
+//删除成绩函数
 List  Delete(List L)
 {
 	int i;
 	List temp=L->next,head=L;
-	printf("____________data\n");
+	printf("____________data\n编号:\n");
 	scanf("%d",&i);
 	
 	if(i==head->s.data)
 	{
 		head=head->next;
+		printf("删除成功");
 		return head;
 	}
 	else{
@@ -180,11 +183,11 @@ List  Delete(List L)
 				temp=temp->next;
 		}
 	}
-	printf("ɾ���ɹ�");
+	printf("删除成功");
 	return head;
 }
 
-//����
+//排序
 void sort(List L)
 {
 //	List da,xiao,head;
@@ -210,21 +213,21 @@ void sort(List L)
 //		}
 //		da=da->next;
 //	}
-//	printf("�ɹ�����");getchar();getchar();
+//	printf("成功排序");getchar();getchar();
 }
 void menu(){
 
 		system("cls");
-		printf("\t\t\t\t\t*********----------����ϵͳģ��********\n");
-		printf("\t\t\t\t\t1.����ѧ����Ϣ\n");
-		printf("\t\t\t\t\t2.��ʾ����ѧ���ĳɼ���Ϣ\n");
-		printf("\t\t\t\t\t3.��ѯ�ɼ�\n");
-		printf("\t\t\t\t\t4.�޸ĳ���\n");
-		printf("\t\t\t\t\t5.ɾ������\n");
-		printf("\t\t\t\t\t6.�ɼ�����\n");
-		printf("\t\t\t\t\t7.��Ϣ�洢\n");
-		printf("\t\t\t\t\t8.��Ϣ��ȡ\n");
-		printf("\t\t\t\t\t����������ѡ��:");
+		printf("\t\t\t\t\t*********----------测试系统模板********\n");
+		printf("\t\t\t\t\t1.添加信息\n");
+		printf("\t\t\t\t\t2.显示所有信息\n");
+		printf("\t\t\t\t\t3.查询信息\n");
+		printf("\t\t\t\t\t4.修改信息\n");
+		printf("\t\t\t\t\t5.删除信息\n");
+		printf("\t\t\t\t\t6.排序(还待测试中)\n");
+		printf("\t\t\t\t\t7.信息存储\n");
+		printf("\t\t\t\t\t8.信息读取\n");
+		printf("\t\t\t\t\t请输入您的选择:");
 }
 void exit(){
 	printf("--------------------");
@@ -235,7 +238,7 @@ void filewriting(List L){
 	fp = fopen("text.txt", "w");
 	while(L)
     {
-            	fprintf(fp,"%d %s\n",L->s.data,L->s.name);//��������ͷ�����ݴ洢�� text.txt�ļ���ȥ�� 
+            	fprintf(fp,"%d %s\n",L->s.data,L->s.name);//将链表里头的数据存储的 text.txt文件里去。 
             	L=L->next;
         
     }
@@ -248,9 +251,15 @@ void fileread(List L){
 	fp = fopen("text.txt", "r");
 	while(L)
 	{
-		fscanf(fp,"%d %s",&L->s.data,L->s.name);			//���ļ���ͷ������text.txt �洢��������ȥ�� 
+		fscanf(fp,"%d %s",&L->s.data,L->s.name);			//将文件里头的数据text.txt 存储到链表里去？ 
 		L=L->next;
 	}
 //	getchar();
     fclose(fp);
+}
+void author(){
+
+	printf("\n\n\n\n\n\n\n测试系统模板 链表实现，功能有 添加数据，查询数据 修改数据 排序数据 存储数据 读取数据  \n\n\t\t\t\t\t\tby 搞");
+	Sleep(5000);
+	system("cls");
 } 
