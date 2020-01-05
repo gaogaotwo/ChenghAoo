@@ -1,0 +1,22 @@
+/*by gao*/
+#include<stdio.h> 
+#include<math.h>
+#include<windows.h>
+void confession(); 
+int main() 
+{ 
+	confession();
+	return 0; 
+}
+void confession(){
+ float y, x, z;   
+ 	printf("你的眼睛可真好看\n里面有晴雨,日月,山川,江河,雨雾,花鸟\n但我的眼睛更好看\n\n因为我的眼里有你\n\n时光温热,岁月静好\n\n其实\n有一句话\n我一直想对你说:\n");     
+ 	for(double y = 2.5; y >= -1.6; y = y - 0.2){ 
+ 	for (double x = -3; x <= 4.8; x = x + 0.1){
+	  	Sleep(10);
+ 		(pow((x*x + y*y - 1), 3) <= 3.6*x*x*y*y*y || (x>-2.4 && x<-2.1 && y<1.5 && y>-1) || (((x<2.5 && x>2.2) || (x>3.4 && x<3.7)) && y>-1 && y<1.5) || (y>-1 && y<-0.6 && x<3.7 && x>2.2)) ? printf("*") : printf(" ");
+	}
+		printf("\n"); 
+ }  
+		getchar();
+}
