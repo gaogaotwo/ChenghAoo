@@ -23,16 +23,16 @@ struct LNode{
 typedef PtrToAdjVNode List;
 
 stu createStuScore();					//创建数据 
-List Add_data();						//添加链表节点 
-List addToList(List list,List temp);	//头插法？ 
+List Add_data();					//添加链表节点 
+List addToList(List list,List temp);			//头插法？ 
 void Show_data(stu temp);				//显示数据 
-void Show_Alldata(List list);			//展示所有数据 
+void Show_Alldata(List list);				//展示所有数据 
 void inquire(List L);					//查询数据 
 void Modify(List L);					//修改数据 
 List  Delete(List L);					//删除数据 
-void sort(List L);						//排序 
-void menu();							//菜单 
-void exit();							//退出 
+void sort(List L);					//排序 
+void menu();						//菜单 
+void exit();						//退出 
 void filewriting(List L);				//文件存储 
 void fileread(List L);					//文件读取
 
