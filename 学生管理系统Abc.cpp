@@ -3,50 +3,50 @@
 #include<stdlib.h>
 
 typedef struct students{
-	char name[10];            //ĞÕÃû
-    int stu_id;               //Ñ§ºÅ
-    char stu_class[15];       //°à¼¶
-    float grade[3];           //ÈıÃÅ¿Î³É¼¨   
+    	char name[10];            	//å§“å
+    	int stu_id;               	//å­¦å·
+    	char stu_class[15];       	//ç­çº§
+    	float grade[3];           	//ä¸‰é—¨è¯¾æˆç»©   
 }stu;
 typedef struct LNode *PtrToAdjVNode;
 struct LNode{
-	stu s;                    //Êı¾İÓò
-	struct LNode *next;       //Ö¸ÕëÓò       
+	stu s;                    //æ•°æ®åŸŸ
+	struct LNode *next;       //æŒ‡é’ˆåŸŸ       
 };
 typedef PtrToAdjVNode List;
 
-stu createStuScore();					//Ìí¼ÓÑ§ÉúÊı¾İ 
-List Add_data();					    //Ìí¼ÓÁ´±í½Úµã 
-List addToList(List L,List temp);       //Í·²å·¨²åÈë½Úµã 
-void Show_data(stu temp);				//ÏÔÊ¾Êı¾İ 
-void Show_Alldata(List L);			    //Õ¹Ê¾ËùÓĞÊı¾İ 
-void Find(List L);					    //²éÑ¯Êı¾İ 
-void After(List L);				    	//ĞŞ¸ÄÊı¾İ 
-List Delete(List L);					//É¾³ıÊı¾İ 
-void sort(List L);					    //ÅÅĞò  
-void menu();						    //Ö÷²Ëµ¥ 
-void exit();						    //ÍË³öÏµÍ³ 
-void filewriting(List L);				//ÎÄ¼ş´æ´¢ 
-List fileread(List L);					//ÎÄ¼ş¶ÁÈ¡
+stu createStuScore();					//æ·»åŠ å­¦ç”Ÿæ•°æ® 
+List Add_data();				        //æ·»åŠ é“¾è¡¨èŠ‚ç‚¹ 
+List addToList(List L,List temp);       		//å¤´æ’æ³•æ’å…¥èŠ‚ç‚¹ 
+void Show_data(stu temp);				//æ˜¾ç¤ºæ•°æ® 
+void Show_Alldata(List L);			    	//å±•ç¤ºæ‰€æœ‰æ•°æ® 
+void Find(List L);					//æŸ¥è¯¢æ•°æ® 
+void After(List L);				    	//ä¿®æ”¹æ•°æ® 
+List Delete(List L);					//åˆ é™¤æ•°æ® 
+void sort(List L);					//æ’åº  
+void menu();						//ä¸»èœå• 
+void exit();						//é€€å‡ºç³»ç»Ÿ 
+void filewriting(List L);				//æ–‡ä»¶å­˜å‚¨ 
+List fileread(List L);					//æ–‡ä»¶è¯»å–
 
-FILE *fp;                               //ÎÄ¼ş
-stu people;								//Ñ§ÉúÁÙÊ±½Úµã 
+FILE *fp;                               		//æ–‡ä»¶
+stu people;						//å­¦ç”Ÿä¸´æ—¶èŠ‚ç‚¹ 
  
 int main()
 {
-	List head=NULL,temp;               //Í·½Úµã³õÊ¼»¯
+	List head=NULL,temp;                   //å¤´èŠ‚ç‚¹åˆå§‹åŒ–
 	int choice;
 
 	while(1)
 	{
-		menu();                        //²Ëµ¥
+		menu();                        //èœå•
 		scanf("%d",&choice);
 		switch(choice)
 		{
-		case 1://Ìí¼ÓÑ§ÉúĞÅÏ¢
-				temp=Add_data();          //ÊäÈëÑ§ÉúĞÅÏ¢
-				head=addToList(head,temp);//½«Ñ§ÉúĞÅÏ¢Ìí¼Ó½øÈ¥Á´±í
-				break;
+		case 1://æ·»åŠ å­¦ç”Ÿä¿¡æ¯
+			temp=Add_data();          //è¾“å…¥å­¦ç”Ÿä¿¡æ¯
+			head=addToList(head,temp);//å°†å­¦ç”Ÿä¿¡æ¯æ·»åŠ è¿›å»é“¾è¡¨
+			break;
 		
 		case 2:Show_Alldata(head);break; 
 
@@ -67,50 +67,50 @@ int main()
 		}
 	}
 }
-stu createStuScore()			//Ñ§ÉúĞÅÏ¢´´½¨ 
+stu createStuScore()			//å­¦ç”Ÿä¿¡æ¯åˆ›å»º 
 {
 	stu temp;
-	printf("ÇëÊäÈëÑ§ÉúĞÕÃû:\n"); 
+	printf("è¯·è¾“å…¥å­¦ç”Ÿå§“å:\n"); 
 	scanf("%s",temp.name);
-	printf("ÇëÊäÈëÑ§ÉúÑ§ºÅ\n");
+	printf("è¯·è¾“å…¥å­¦ç”Ÿå­¦å·\n");
 	scanf("%d",&temp.stu_id);
-    printf("ÇëÊäÈëÑ§Éú°à¼¶\n");
-    scanf("%s",temp.stu_class);
-    printf("Çë·Ö±ğÊäÈëÑ§ÉúÈıÃÅ¿Î³Ì³É¼¨\n");
-    scanf("%f %f %f",&temp.grade[0],&temp.grade[1],&temp.grade[2]);
+   	printf("è¯·è¾“å…¥å­¦ç”Ÿç­çº§\n");
+    	scanf("%s",temp.stu_class);
+    	printf("è¯·åˆ†åˆ«è¾“å…¥å­¦ç”Ÿä¸‰é—¨è¯¾ç¨‹æˆç»©\n");
+    	scanf("%f %f %f",&temp.grade[0],&temp.grade[1],&temp.grade[2]);
 	return temp;
 }
 
 
-List Add_data()					// ĞÂ½¨Ò»¸ö½Úµã ²¢ÇÒÍê³É¶ÔÊı¾İÓòµÄ¸³Öµ 
+List Add_data()					// æ–°å»ºä¸€ä¸ªèŠ‚ç‚¹ å¹¶ä¸”å®Œæˆå¯¹æ•°æ®åŸŸçš„èµ‹å€¼ 
 {
 	List Node;
-	Node=(List)malloc(sizeof(LNode));	//½Úµã·ÖÅäÄÚ´æ
-	Node->s=createStuScore();           //Íê³É¶ÔÑ§ÉúĞÅÏ¢¸³Öµ
+	Node=(List)malloc(sizeof(LNode));	//èŠ‚ç‚¹åˆ†é…å†…å­˜
+	Node->s=createStuScore();           	//å®Œæˆå¯¹å­¦ç”Ÿä¿¡æ¯èµ‹å€¼
 	Node->next=NULL;	
-	return Node;                        //·µ»Ø½ÚµãµØÖ·
+	return Node;                        	//è¿”å›èŠ‚ç‚¹åœ°å€
 }
 
-//½«Ò»¸ö½ÚµãÌí¼Óµ½ÁĞ±íÖĞÈ¥£¬·µ»ØÁĞ±íµÄÍ·Ö¸Õë
+//å°†ä¸€ä¸ªèŠ‚ç‚¹æ·»åŠ åˆ°åˆ—è¡¨ä¸­å»ï¼Œè¿”å›åˆ—è¡¨çš„å¤´æŒ‡é’ˆ
 List addToList(List L,List temp)
 {
-    /*²ÉÓÃÍ·²å·¨¶ÔÁ´±íµÄÁ´½Ó*/
+    /*é‡‡ç”¨å¤´æ’æ³•å¯¹é“¾è¡¨çš„é“¾æ¥*/
 	temp->next=L;    
 	L=temp;
 	return L;
 }
 
-//ÏÔÊ¾ĞÅÏ¢
+//æ˜¾ç¤ºä¿¡æ¯
 void Show_data(stu temp)
 {
-	printf("Ñ§ÉúĞÕÃû:%s\tÑ§ÉúÑ§ºÅ:%d\tÑ§Éú°à¼¶:%s\tÑ§ÉúÈıÃÅ¿Î³Ì³É¼¨: %.2f %.2f %.2f\n",
-    temp.name,temp.stu_id,temp.stu_class,temp.grade[0],temp.grade[1],temp.grade[2]);
+	printf("å­¦ç”Ÿå§“å:%s\tå­¦ç”Ÿå­¦å·:%d\tå­¦ç”Ÿç­çº§:%s\tå­¦ç”Ÿä¸‰é—¨è¯¾ç¨‹æˆç»©: %.2f %.2f %.2f\n",
+    		temp.name,temp.stu_id,temp.stu_class,temp.grade[0],temp.grade[1],temp.grade[2]);
 }
-//ÏÔÊ¾ËùÓĞÑ§ÉúĞÅÏ¢
+//æ˜¾ç¤ºæ‰€æœ‰å­¦ç”Ÿä¿¡æ¯
 void Show_Alldata(List L)
 {
 	if(L==NULL)
-		printf("Ã»ÓĞĞÅÏ¢£¡"); 
+		printf("æ²¡æœ‰ä¿¡æ¯ï¼"); 
 	while(L)
 	{
 		Show_data(L->s);
@@ -119,63 +119,63 @@ void Show_Alldata(List L)
 	getchar();getchar();
 }
 
-//²éÑ¯º¯Êı
+//æŸ¥è¯¢å‡½æ•°
 void Find(List L)
 {
 	int pos;
-    /*ÎÒÓÃµÄÊÇÑ§ÉúÑ§ºÅ²éÑ¯£¬µ±È»Äã¿ÉÒÔÓÃÆäËûµÄ²éÑ¯Ìõ¼ş*/
-	printf("ÇëÊäÈë²éÑ¯Ñ§ÉúÑ§ºÅ±àºÅ:\n");
+    /*æˆ‘ç”¨çš„æ˜¯å­¦ç”Ÿå­¦å·æŸ¥è¯¢ï¼Œå½“ç„¶ä½ å¯ä»¥ç”¨å…¶ä»–çš„æŸ¥è¯¢æ¡ä»¶*/
+	printf("è¯·è¾“å…¥æŸ¥è¯¢å­¦ç”Ÿå­¦å·ç¼–å·:\n");
 	scanf("%d",&pos);	
 	while(L)
 	{
-		if(pos==L->s.stu_id){				//ÅĞ¶Ï Ìõ¼ş	
+		if(pos==L->s.stu_id){				//åˆ¤æ–­ æ¡ä»¶	
 			Show_data(L->s);
-			printf("²éÑ¯³É¹¦£¡\n");
+			printf("æŸ¥è¯¢æˆåŠŸï¼\n");
 			getchar();getchar();
 			return; 
         }
 		L=L->next;
 	}
-	printf("²éÑ¯Ê§°Ü£¡\n");
+	printf("æŸ¥è¯¢å¤±è´¥ï¼\n");
     	getchar();getchar();
 }
 
-//ĞŞ¸Ä³ÌĞòº¯Êı
+//ä¿®æ”¹ç¨‹åºå‡½æ•°
 void After(List L)
 {
 	int pos;
-    /*ÎÒÓÃµÄÊÇÑ§ÉúÑ§ºÅĞŞ¸Ä£¬µ±È»Äã¿ÉÒÔÓÃÆäËûµÄ²éÑ¯Ìõ¼ş*/	
-	printf("ÇëÏëÒªĞŞ¸ÄÑ§ÉúÑ§ºÅ:\n");
+    /*æˆ‘ç”¨çš„æ˜¯å­¦ç”Ÿå­¦å·ä¿®æ”¹ï¼Œå½“ç„¶ä½ å¯ä»¥ç”¨å…¶ä»–çš„æŸ¥è¯¢æ¡ä»¶*/	
+	printf("è¯·æƒ³è¦ä¿®æ”¹å­¦ç”Ÿå­¦å·:\n");
 	scanf("%d",&pos);
 	while(L)
 	{
 		if(pos==L->s.stu_id)
 		{
-			L->s=createStuScore();    //ÖØĞÂ´´½¨Ñ§ÉúĞÅÏ¢£¬²¢¸³Öµ
-            printf("ĞŞ¸Ä³É¹¦!\n");
-            getchar();getchar();
+			L->s=createStuScore();    //é‡æ–°åˆ›å»ºå­¦ç”Ÿä¿¡æ¯ï¼Œå¹¶èµ‹å€¼
+            		printf("ä¿®æ”¹æˆåŠŸ!\n");
+            		getchar();getchar();
 			return; 
 		}
 		L=L->next;
 	}
-	printf("ĞŞ¸ÄÊ§°Ü!\n");
+	printf("ä¿®æ”¹å¤±è´¥!\n");
 	getchar();getchar();
 }
 
-//É¾³ı³É¼¨º¯Êı
+//åˆ é™¤æˆç»©å‡½æ•°
 List Delete(List L)
 {
 	int pos;
-    /*ÎÒÓÃµÄÊÇÑ§ÉúÑ§ºÅÉ¾³ı£¬µ±È»Äã¿ÉÒÔÓÃÆäËûµÄ²éÑ¯Ìõ¼ş*/
-	List temp=L->next;    //×¢ÒâÎÒµÄĞ´·¨
+    /*æˆ‘ç”¨çš„æ˜¯å­¦ç”Ÿå­¦å·åˆ é™¤ï¼Œå½“ç„¶ä½ å¯ä»¥ç”¨å…¶ä»–çš„æŸ¥è¯¢æ¡ä»¶*/
+	List temp=L->next;    //æ³¨æ„æˆ‘çš„å†™æ³•
     List head=L;  
-	printf("ÇëÊäÈëÉ¾³ıÑ§ÉúÑ§ºÅ\n");
+	printf("è¯·è¾“å…¥åˆ é™¤å­¦ç”Ÿå­¦å·\n");
 	scanf("%d",&pos);
-	/*ÏÈÅĞ¶ÏÍ·½ÚµãĞÅÏ¢*/
+	/*å…ˆåˆ¤æ–­å¤´èŠ‚ç‚¹ä¿¡æ¯*/
 	if(pos==head->s.stu_id)
 	{
-		L=head->next;			//ÕÒµ½ĞÅÏ¢½Úµã µÈÓÚÕÒµ½ĞÅÏ¢½Úµã µÄÏÂÒ»¸ö½Úµã ÊµÏÖµØÖ·±ä¸ü 
-		printf("É¾³ı³É¹¦!\n");
+		L=head->next;			//æ‰¾åˆ°ä¿¡æ¯èŠ‚ç‚¹ ç­‰äºæ‰¾åˆ°ä¿¡æ¯èŠ‚ç‚¹ çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹ å®ç°åœ°å€å˜æ›´ 
+		printf("åˆ é™¤æˆåŠŸ!\n");
 		getchar();getchar();
 		return L;
 	}
@@ -183,30 +183,30 @@ List Delete(List L)
 		
 		while(temp)                    
 		{
-			if(pos==temp->s.stu_id)         /*ÕÒµ½ĞÅÏ¢½Úµã temp=L->next   head=L */ 
+			if(pos==temp->s.stu_id)           /*æ‰¾åˆ°ä¿¡æ¯èŠ‚ç‚¹ temp=L->next   head=L */ 
 			{                             
-				head->next=temp->next;    //ÕÒµ½ĞÅÏ¢½Úµã µÈÓÚÕÒµ½ĞÅÏ¢½Úµã µÄÏÂÒ»¸ö½Úµã ÊµÏÖµØÖ·±ä¸ü
-                free(temp);
-                printf("É¾³ı³É¹¦!\n");
-                getchar();getchar();
+				head->next=temp->next;    //æ‰¾åˆ°ä¿¡æ¯èŠ‚ç‚¹ ç­‰äºæ‰¾åˆ°ä¿¡æ¯èŠ‚ç‚¹ çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹ å®ç°åœ°å€å˜æ›´
+                		free(temp);
+                		printf("åˆ é™¤æˆåŠŸ!\n");
+                		getchar();getchar();
 				return L;
 			}
 			else
-				temp=temp->next;
+			temp=temp->next;
 		}
 	}
-	printf("É¾³ıÊ§°Ü!\n");
-    getchar();getchar();
-    return L;
+	printf("åˆ é™¤å¤±è´¥!\n");
+    	getchar();getchar();
+    	return L;
 }
 
-//ÅÅĞò
-void sort(List L)//°´´Ó´óµ½Ğ¡ÅÅĞò 
+//æ’åº
+void sort(List L)//æŒ‰ä»å¤§åˆ°å°æ’åº 
 {
-	List big,small;	//Í·½Úµã ´óĞ¡½Úµã 
+	List big,small;		//å¤´èŠ‚ç‚¹ å¤§å°èŠ‚ç‚¹ 
 	
 	big=L;
-	stu temp;               //Ñ§ÉúĞÅÏ¢ÁÙÊ±½Úµã
+	stu temp;               //å­¦ç”Ÿä¿¡æ¯ä¸´æ—¶èŠ‚ç‚¹
 	int grade,grade1;
 	
 	
@@ -217,43 +217,43 @@ void sort(List L)//°´´Ó´óµ½Ğ¡ÅÅĞò
 		while(small)
 		{
 			grade1=small->s.grade[0]+small->s.grade[1]+small->s.grade[2];
-			if(grade>grade1)		//´ÓĞ¡µ½´ó ÒÀ´ÎÅĞ¶Ï  Èô²»·ûºÏÔò½»»» 
-			{						//²ÉÓÃµÄÊÇÑ¡ÔñÅÅĞò·¨ £¡²»ÖªµÀµÄÍ¬Ñ§£¬Ñ¡ÔñÅÅĞòÎÒÇ°ÃæÓĞ½²½â  
+			if(grade>grade1)		//ä»å°åˆ°å¤§ ä¾æ¬¡åˆ¤æ–­  è‹¥ä¸ç¬¦åˆåˆ™äº¤æ¢ 
+			{				//é‡‡ç”¨çš„æ˜¯é€‰æ‹©æ’åºæ³• ï¼ä¸çŸ¥é“çš„åŒå­¦ï¼Œé€‰æ‹©æ’åºæˆ‘å‰é¢æœ‰è®²è§£  
 				temp=big->s;
-				big->s=small->s;	//½»»»  Ñ§ÉúĞÅÏ¢ ×¢Òâ ½»»»µÄÊÇÒ»¸öÕûÌå£¡ 
+				big->s=small->s;	//äº¤æ¢  å­¦ç”Ÿä¿¡æ¯ æ³¨æ„ äº¤æ¢çš„æ˜¯ä¸€ä¸ªæ•´ä½“ï¼ 
 				small->s=temp;
 			}
-			small=small->next;		//ÄÚ²ãÑ­»· 
+			small=small->next;		//å†…å±‚å¾ªç¯ 
 		}
-		big=big->next;				//Íâ²ãÑ­»· 
+		big=big->next;				//å¤–å±‚å¾ªç¯ 
 	}
-	printf("ÅÅĞò³É¹¦!\n");
-    getchar();getchar();
+		printf("æ’åºæˆåŠŸ!\n");
+    		getchar();getchar();
 }
 void menu(){
 
 		system("cls");
-		printf("              xxÑ§ÉúÏµÍ³Ä£°å            \n\n");
+		printf("              xxå­¦ç”Ÿç³»ç»Ÿæ¨¡æ¿            \n\n");
 		printf("=========================================\n");
-		printf("|             1.Ìí¼ÓĞÅÏ¢                |\n");
-		printf("|             2.ÏÔÊ¾ËùÓĞĞÅÏ¢            |\n");
-		printf("|             3.²éÑ¯ĞÅÏ¢                |\n");
-		printf("|             4.ĞŞ¸ÄĞÅÏ¢                |\n");
-		printf("|             5.É¾³ıĞÅÏ¢                |\n");
-		printf("|             6.³É¼¨ÅÅĞò                |\n");
-		printf("|             7.ĞÅÏ¢´æ´¢                |\n");
-		printf("|             8.ĞÅÏ¢¶ÁÈ¡                |\n");
-		printf("|             0.ÍË³öÏµÍ³                |\n");
+		printf("|             1.æ·»åŠ ä¿¡æ¯                |\n");
+		printf("|             2.æ˜¾ç¤ºæ‰€æœ‰ä¿¡æ¯            |\n");
+		printf("|             3.æŸ¥è¯¢ä¿¡æ¯                |\n");
+		printf("|             4.ä¿®æ”¹ä¿¡æ¯                |\n");
+		printf("|             5.åˆ é™¤ä¿¡æ¯                |\n");
+		printf("|             6.æˆç»©æ’åº                |\n");
+		printf("|             7.ä¿¡æ¯å­˜å‚¨                |\n");
+		printf("|             8.ä¿¡æ¯è¯»å–                |\n");
+		printf("|             0.é€€å‡ºç³»ç»Ÿ                |\n");
 		printf("=========================================\n");
-		printf("ÇëÊäÈëÄúµÄÑ¡Ôñ:");
+		printf("è¯·è¾“å…¥æ‚¨çš„é€‰æ‹©:");
 }
 void exit(){
-	printf("ÍË³öÏµÍ³³É¹¦!");
+	printf("é€€å‡ºç³»ç»ŸæˆåŠŸ!");
 	exit(0);
 }
 void filewriting(List L){
 	
-	fp = fopen("text.txt", "w");    //´ò¿ªÎÄ¼ş£¬²¢ÇÒ°ÑÎÄ¼şÉèÖÃÎª¿ÉĞ´×´Ì¬
+	fp = fopen("text.txt", "w");    //æ‰“å¼€æ–‡ä»¶ï¼Œå¹¶ä¸”æŠŠæ–‡ä»¶è®¾ç½®ä¸ºå¯å†™çŠ¶æ€
 	while(L)
     {
             	fprintf(fp,"%s %d %s %.2f %.2f %.2f\n",
@@ -262,19 +262,19 @@ void filewriting(List L){
                 L->s.stu_class,
                 L->s.grade[0],
                 L->s.grade[1],
-                L->s.grade[2]);//½«Á´±íÀïÍ·µÄÊı¾İ´æ´¢µÄ text.txtÎÄ¼şÀïÈ¥¡£ 
+                L->s.grade[2]);//å°†é“¾è¡¨é‡Œå¤´çš„æ•°æ®å­˜å‚¨çš„ text.txtæ–‡ä»¶é‡Œå»ã€‚ 
                                 
             	L=L->next;    
     }
-    fclose(fp);        //¹Ø±ÕÎÄ¼ş
+    		fclose(fp);        //å…³é—­æ–‡ä»¶
 }
 
 List fileread(List L){
 
-	fp = fopen("text.txt", "r");    //´ò¿ªÎÄ¼ş£¬²¢ÇÒ°ÑÎÄ¼şÉèÖÃÎª¿ÉĞ´×´Ì¬
-	while(!feof(fp))				//feop Ò»Ö±µ½ÎÄ¼şĞÅÏ¢×îºó Ò»¸ö'/0' 
+	fp = fopen("text.txt", "r");    //æ‰“å¼€æ–‡ä»¶ï¼Œå¹¶ä¸”æŠŠæ–‡ä»¶è®¾ç½®ä¸ºå¯å†™çŠ¶æ€
+	while(!feof(fp))				//feop ä¸€ç›´åˆ°æ–‡ä»¶ä¿¡æ¯æœ€å ä¸€ä¸ª'/0' 
 	{ 
-		fscanf(fp,"%s %d %s %f %f %f\n",    	//½«ÎÄ¼şÀïÍ·µÄÊı¾İtext.txt ´æ´¢µ½Á´±íÀïÈ¥
+		fscanf(fp,"%s %d %s %f %f %f\n",    	//å°†æ–‡ä»¶é‡Œå¤´çš„æ•°æ®text.txt å­˜å‚¨åˆ°é“¾è¡¨é‡Œå»
                 people.name,
                 &people.stu_id,
                 people.stu_class,
@@ -282,14 +282,14 @@ List fileread(List L){
                 &people.grade[1],
                 &people.grade[2]
         );			
-		List p=(List)malloc(sizeof(LNode));      //´´½¨Ò»¸öĞÂ½Úµã
-        p->s=people;                             //¶Ô½ÚµãÑ§ÉúĞÅÏ¢¸³Öµ
-        p->next=NULL;							  
-        L=addToList(L,p);                        //Í·²å·¨Ìí¼Ó½Úµã
+		List p=(List)malloc(sizeof(LNode));       //åˆ›å»ºä¸€ä¸ªæ–°èŠ‚ç‚¹
+        	p->s=people;                              //å¯¹èŠ‚ç‚¹å­¦ç”Ÿä¿¡æ¯èµ‹å€¼
+        	p->next=NULL;							  
+        	L=addToList(L,p);                         //å¤´æ’æ³•æ·»åŠ èŠ‚ç‚¹
 	}
-    fclose(fp);									//¹Ø±ÕÎÄ¼ş
-	printf("¶ÁÈ¡³É¹¦");
+    	fclose(fp);				          //å…³é—­æ–‡ä»¶
+	printf("è¯»å–æˆåŠŸ");
 	getchar();getchar(); 
-    return L;											
+    	return L;											
 }
 
