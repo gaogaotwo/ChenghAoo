@@ -3,11 +3,11 @@
 #include<stdlib.h>
 #include<time.h> 
 typedef struct people{
-	char name[15];			//Ãû×Ö 
-	char card_id[10];		//ÕËºÅid
-	char peo_id[20];		//Éí·İÖ¤id
-	char phone_num[10];		//ÊÖ»úºÅÂë
-	float account;			//ÕË»§Óà¶î	   
+	char name[15];			//åå­— 
+	char card_id[10];		//è´¦å·id
+	char peo_id[20];		//èº«ä»½è¯id
+	char phone_num[10];		//æ‰‹æœºå·ç 
+	float account;			//è´¦æˆ·ä½™é¢	   
 }peo;
 //typedef struct time{
 //	int year[10];	
@@ -21,45 +21,45 @@ typedef struct people{
 
 typedef struct LNode *PtrToAdjVNode;
 struct LNode{
-	//Time t;				  //Ê±¼ä 
-	peo p;                    //Êı¾İÓò
-	struct LNode *next;       //Ö¸ÕëÓò       
+	//Time t;				  	//æ—¶é—´ 
+	peo p;                    			//æ•°æ®åŸŸ
+	struct LNode *next;       			//æŒ‡é’ˆåŸŸ       
 };
 typedef PtrToAdjVNode List;
 
-peo createStuScore();					//Ìí¼Ó´¢»§Êı¾İ 
-List Add_data();				        //Ìí¼ÓÁ´±í½Úµã 
-List addToList(List L,List temp);       //Í·²å·¨²åÈë½Úµã 
-void Show_data(peo temp);				//ÏÔÊ¾Êı¾İ 
-void Show_Alldata(List L);			    //½»Ò×Ã÷Ï¸ 
-void Find(List L);						//²éÑ¯Êı¾İ 
-void After(List L);				    	//´¢»§´æ¿î 
-List Delete(List L);					//Ïú»§ÓÃ»§ 
-void After_1(List L);					//´¢»§È¡¿î 
-void menu();							//Ö÷²Ëµ¥ 
-void exit();							//ÍË³öÏµÍ³ 
-void filewriting(List L);				//ÎÄ¼ş´æ´¢ 
-List fileread(List L);					//ÎÄ¼ş¶ÁÈ¡
+peo createStuScore();					//æ·»åŠ å‚¨æˆ·æ•°æ® 
+List Add_data();				        //æ·»åŠ é“¾è¡¨èŠ‚ç‚¹ 
+List addToList(List L,List temp);       		//å¤´æ’æ³•æ’å…¥èŠ‚ç‚¹ 
+void Show_data(peo temp);				//æ˜¾ç¤ºæ•°æ® 
+void Show_Alldata(List L);			 	//äº¤æ˜“æ˜ç»† 
+void Find(List L);					//æŸ¥è¯¢æ•°æ® 
+void After(List L);				    	//å‚¨æˆ·å­˜æ¬¾ 
+List Delete(List L);					//é”€æˆ·ç”¨æˆ· 
+void After_1(List L);					//å‚¨æˆ·å–æ¬¾ 
+void menu();						//ä¸»èœå• 
+void exit();						//é€€å‡ºç³»ç»Ÿ 
+void filewriting(List L);				//æ–‡ä»¶å­˜å‚¨ 
+List fileread(List L);					//æ–‡ä»¶è¯»å–
 
-FILE *fp;                           	//ÎÄ¼ş
-peo Temp;								//´¢»§ÁÙÊ±½Úµã 
-//	  time_t timep;						//Ê±¼äº¯Êı½Úµã 
+FILE *fp;                           			//æ–‡ä»¶
+peo Temp;						//å‚¨æˆ·ä¸´æ—¶èŠ‚ç‚¹ 
+//	  time_t timep;					//æ—¶é—´å‡½æ•°èŠ‚ç‚¹ 
 //    struct tm *q;
  
 int main()
 {
 	system("color 8E");
-	List head=NULL,temp;                //Í·½Úµã³õÊ¼»¯
+	List head=NULL,temp;                		//å¤´èŠ‚ç‚¹åˆå§‹åŒ–
 	int choice; 
 	while(1)
 	{
-		menu();                        	//²Ëµ¥
+		menu();                        		//èœå•
 		scanf("%d",&choice);
 		switch(choice)
 		{
-		case 1://Ìí¼Ó´¢»§ĞÅÏ¢
-			temp=Add_data();          	//ÊäÈë´¢»§ĞÅÏ¢
-			head=addToList(head,temp);	//½«´¢»§ĞÅÏ¢Ìí¼Ó½øÈ¥Á´±í
+		case 1://æ·»åŠ å‚¨æˆ·ä¿¡æ¯
+			temp=Add_data();          	//è¾“å…¥å‚¨æˆ·ä¿¡æ¯
+			head=addToList(head,temp);	//å°†å‚¨æˆ·ä¿¡æ¯æ·»åŠ è¿›å»é“¾è¡¨
 			break;
 		
 		case 6:Show_Alldata(head);break; 
@@ -81,59 +81,59 @@ int main()
 		} 
 	}
 }
-peo createStuScore()			//´¢»§ĞÅÏ¢´´½¨ 
+peo createStuScore()					//å‚¨æˆ·ä¿¡æ¯åˆ›å»º 
 {
 	peo temp_1;
-	printf("ÇëÊäÈë´¢»§ĞÕÃû:\n"); 
+	printf("è¯·è¾“å…¥å‚¨æˆ·å§“å:\n"); 
 	scanf("%s",temp_1.name);
 	
-	printf("ÇëÊäÈë´¢»§ÕËºÅ £¨6Î»£©\n");
-	while(strlen(temp_1.card_id)!=6){			//6 Î»ÊıµÄÓ´ 
+	printf("è¯·è¾“å…¥å‚¨æˆ·è´¦å· ï¼ˆ6ä½ï¼‰\n");
+	while(strlen(temp_1.card_id)!=6){		//6 ä½æ•°çš„å“Ÿ 
 		scanf("%s",temp_1.card_id);
 	}
 	
-	printf("ÇëÊäÈë´¢»§Éí·İÖ¤ºÅÂë£¨18Î»£©\n");
-	while(strlen(temp_1.peo_id)!=18){   		//18 Î»ÊıµÄÓ´ 	
+	printf("è¯·è¾“å…¥å‚¨æˆ·èº«ä»½è¯å·ç ï¼ˆ18ä½ï¼‰\n");
+	while(strlen(temp_1.peo_id)!=18){   		//18 ä½æ•°çš„å“Ÿ 	
     	scanf("%s",temp_1.peo_id);
     } 
-    printf("ÇëÊäÈë´¢»§ÁªÏµµç»°\n");
+    printf("è¯·è¾“å…¥å‚¨æˆ·è”ç³»ç”µè¯\n");
     	scanf("%s",temp_1.phone_num);
 		
-		temp_1.account=0;						//¿ª»§Ä¬ÈÏÕË»§Îª0
+		temp_1.account=0;						//å¼€æˆ·é»˜è®¤è´¦æˆ·ä¸º0
 									 
 	return temp_1;
 }
 
 
-List Add_data()					// ĞÂ½¨Ò»¸ö½Úµã ²¢ÇÒÍê³É¶ÔÊı¾İÓòµÄ¸³Öµ 
+List Add_data()					// æ–°å»ºä¸€ä¸ªèŠ‚ç‚¹ å¹¶ä¸”å®Œæˆå¯¹æ•°æ®åŸŸçš„èµ‹å€¼ 
 {
 	List Node;
-	Node=(List)malloc(sizeof(LNode));	//½Úµã·ÖÅäÄÚ´æ
-	Node->p=createStuScore();           	//Íê³É¶Ô´¢»§ĞÅÏ¢¸³Öµ
+	Node=(List)malloc(sizeof(LNode));	//èŠ‚ç‚¹åˆ†é…å†…å­˜
+	Node->p=createStuScore();           	//å®Œæˆå¯¹å‚¨æˆ·ä¿¡æ¯èµ‹å€¼
 	Node->next=NULL;	
-	return Node;                        	//·µ»Ø½ÚµãµØÖ·
+	return Node;                        	//è¿”å›èŠ‚ç‚¹åœ°å€
 }
 
-//½«Ò»¸ö½ÚµãÌí¼Óµ½ÁĞ±íÖĞÈ¥£¬·µ»ØÁĞ±íµÄÍ·Ö¸Õë
+//å°†ä¸€ä¸ªèŠ‚ç‚¹æ·»åŠ åˆ°åˆ—è¡¨ä¸­å»ï¼Œè¿”å›åˆ—è¡¨çš„å¤´æŒ‡é’ˆ
 List addToList(List L,List temp)
 {
-    /*²ÉÓÃÍ·²å·¨¶ÔÁ´±íµÄÁ´½Ó*/
+    /*é‡‡ç”¨å¤´æ’æ³•å¯¹é“¾è¡¨çš„é“¾æ¥*/
 	temp->next=L;    
 	L=temp;
 	return L;
 }
 
-//ÏÔÊ¾ĞÅÏ¢
+//æ˜¾ç¤ºä¿¡æ¯
 void Show_data(peo temp)
 {
-	printf("´¢»§ĞÕÃû:%s ´¢»§ÕËºÅ: %s Éí·İÖ¤ºÅ : %s ÁªÏµµç»°: %s ÕËºÅÓà¶î: %.3f\n",temp.name,temp.card_id,temp.peo_id,temp.phone_num,temp.account);
+	printf("å‚¨æˆ·å§“å:%s å‚¨æˆ·è´¦å·: %s èº«ä»½è¯å· : %s è”ç³»ç”µè¯: %s è´¦å·ä½™é¢: %.3f\n",temp.name,temp.card_id,temp.peo_id,temp.phone_num,temp.account);
 	  
 }
-//ÏÔÊ¾ËùÓĞ´¢»§ĞÅÏ¢
+//æ˜¾ç¤ºæ‰€æœ‰å‚¨æˆ·ä¿¡æ¯
 void Show_Alldata(List L)
 {
 	if(L==NULL)
-		printf("Ã»ÓĞĞÅÏ¢£¡"); 
+		printf("æ²¡æœ‰ä¿¡æ¯ï¼"); 
 	while(L)
 	{
 		Show_data(L->p);
@@ -142,45 +142,45 @@ void Show_Alldata(List L)
 	getchar();getchar();
 }
 
-//²éÑ¯º¯Êı
+//æŸ¥è¯¢å‡½æ•°
 void Find(List L)
 {
 	char pos[10];
-    /*ÎÒÓÃµÄÊÇ´¢»§Ñ§ºÅ²éÑ¯£¬µ±È»Äã¿ÉÒÔÓÃÆäËûµÄ²éÑ¯Ìõ¼ş*/
-	printf("ÇëÊäÈë²éÑ¯´¢»§¿¨ºÅ:\n");
+    /*æˆ‘ç”¨çš„æ˜¯å‚¨æˆ·å­¦å·æŸ¥è¯¢ï¼Œå½“ç„¶ä½ å¯ä»¥ç”¨å…¶ä»–çš„æŸ¥è¯¢æ¡ä»¶*/
+	printf("è¯·è¾“å…¥æŸ¥è¯¢å‚¨æˆ·å¡å·:\n");
 	scanf("%s",pos);	
 	while(L)
 	{
-		if(!strcmp(L->p.card_id,pos)){				//ÅĞ¶Ï Ìõ¼ş	
+		if(!strcmp(L->p.card_id,pos)){				//åˆ¤æ–­ æ¡ä»¶	
 			Show_data(L->p);
-			printf("²éÑ¯³É¹¦£¡\n");
+			printf("æŸ¥è¯¢æˆåŠŸï¼\n");
 			getchar();getchar();
 			return; 
         }
 		L=L->next;
 	}
-	printf("²éÑ¯Ê§°Ü£¡\n");
+	printf("æŸ¥è¯¢å¤±è´¥ï¼\n");
     	getchar();getchar();
 }
 
-//´¢»§´æ¿îº¯Êı
+//å‚¨æˆ·å­˜æ¬¾å‡½æ•°
 void After(List L)
 {
 	char pos[10];
 	float money;
-    /*ÎÒÓÃµÄÊÇ´¢»§ÕËºÅ£¬µ±È»Äã¿ÉÒÔÓÃÆäËûµÄ²éÑ¯Ìõ¼ş*/
+    /*æˆ‘ç”¨çš„æ˜¯å‚¨æˆ·è´¦å·ï¼Œå½“ç„¶ä½ å¯ä»¥ç”¨å…¶ä»–çš„æŸ¥è¯¢æ¡ä»¶*/
     
 //    time(&timep);
-//    q =localtime(&timep); //´Ëº¯Êı»ñµÃµÄtm½á¹¹ÌåµÄÊ±¼ä£¬ÊÇÒÑ¾­½øĞĞ¹ıÊ±Çø×ª»¯Îª±¾µØÊ±¼ä
+//    q =localtime(&timep); //æ­¤å‡½æ•°è·å¾—çš„tmç»“æ„ä½“çš„æ—¶é—´ï¼Œæ˜¯å·²ç»è¿›è¡Œè¿‡æ—¶åŒºè½¬åŒ–ä¸ºæœ¬åœ°æ—¶é—´
 	
 		
-	printf("ÇëÏëÒª´¢»§ÕËºÅ:\n");
+	printf("è¯·æƒ³è¦å‚¨æˆ·è´¦å·:\n");
 	scanf("%s",pos);
 	while(L)
 	{
 		if(!strcmp(L->p.card_id,pos))
 		{
-			printf("ÇëÊäÈë´æ¿î¶î¶È\n");
+			printf("è¯·è¾“å…¥å­˜æ¬¾é¢åº¦\n");
 				scanf("%f",&money);
 				L->p.account+=money;				
 //				L->t.day[]=1900+q->tm_year;
@@ -189,30 +189,30 @@ void After(List L)
 //				L->t.hour=q->tm_hour;
 //				L->t.minutes=q->tm_min;
 //				L->t.second=q->tm_sec;
-				printf("´æ¿î³É¹¦\n");							 
+				printf("å­˜æ¬¾æˆåŠŸ\n");							 
             	getchar();getchar();
 				return; 
 		}
 		L=L->next;
 	}
-	printf("´æ´¢Ê§°Ü!\n");
+	printf("å­˜å‚¨å¤±è´¥!\n");
 	getchar();getchar();
 }
 
-//É¾³ı³É¼¨º¯Êı
+//åˆ é™¤æˆç»©å‡½æ•°
 List Delete(List L)
 {
 	char pos[10];
-    /*ÎÒÓÃµÄÊÇ´¢»§Ñ§ºÅÉ¾³ı£¬µ±È»Äã¿ÉÒÔÓÃÆäËûµÄ²éÑ¯Ìõ¼ş*/
-	List temp=L->next;    //×¢ÒâÎÒµÄĞ´·¨
+    /*æˆ‘ç”¨çš„æ˜¯å‚¨æˆ·å­¦å·åˆ é™¤ï¼Œå½“ç„¶ä½ å¯ä»¥ç”¨å…¶ä»–çš„æŸ¥è¯¢æ¡ä»¶*/
+	List temp=L->next;    //æ³¨æ„æˆ‘çš„å†™æ³•
     List head=L;  
-	printf("ÇëÊäÈëÏú»§ÕËºÅ\n");
+	printf("è¯·è¾“å…¥é”€æˆ·è´¦å·\n");
 	scanf("%s",pos);
-	/*ÏÈÅĞ¶ÏÍ·½ÚµãĞÅÏ¢*/
+	/*å…ˆåˆ¤æ–­å¤´èŠ‚ç‚¹ä¿¡æ¯*/
 	if(!strcmp(head->p.card_id,pos))
 	{
-		L=head->next;			//ÕÒµ½ĞÅÏ¢½Úµã µÈÓÚÕÒµ½ĞÅÏ¢½Úµã µÄÏÂÒ»¸ö½Úµã ÊµÏÖµØÖ·±ä¸ü 
-		printf("Ïú»§³É¹¦!\n");
+		L=head->next;			//æ‰¾åˆ°ä¿¡æ¯èŠ‚ç‚¹ ç­‰äºæ‰¾åˆ°ä¿¡æ¯èŠ‚ç‚¹ çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹ å®ç°åœ°å€å˜æ›´ 
+		printf("é”€æˆ·æˆåŠŸ!\n");
 		getchar();getchar();
 		return L;
 	}
@@ -220,11 +220,11 @@ List Delete(List L)
 		
 		while(temp)                    
 		{
-			if(!strcmp(L->p.card_id,pos))           /*ÕÒµ½ĞÅÏ¢½Úµã temp=L->next   head=L */ 
+			if(!strcmp(L->p.card_id,pos))           /*æ‰¾åˆ°ä¿¡æ¯èŠ‚ç‚¹ temp=L->next   head=L */ 
 			{                             
-				head->next=temp->next;    //ÕÒµ½ĞÅÏ¢½Úµã µÈÓÚÕÒµ½ĞÅÏ¢½Úµã µÄÏÂÒ»¸ö½Úµã ÊµÏÖµØÖ·±ä¸ü
+				head->next=temp->next;    //æ‰¾åˆ°ä¿¡æ¯èŠ‚ç‚¹ ç­‰äºæ‰¾åˆ°ä¿¡æ¯èŠ‚ç‚¹ çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹ å®ç°åœ°å€å˜æ›´
                 		free(temp);
-                		printf("Ïú»§³É¹¦!\n");
+                		printf("é”€æˆ·æˆåŠŸ!\n");
                 		getchar();getchar();
 				return L;
 			}
@@ -232,33 +232,33 @@ List Delete(List L)
 			temp=temp->next;
 		}
 	}
-	printf("Ïú»§Ê§°Ü!\n");
+	printf("é”€æˆ·å¤±è´¥!\n");
     	getchar();getchar();
     	return L;
 }
 
-//´¢»§È¡¿îº¯Êı
-void After_1(List L)//°´´Ó´óµ½Ğ¡ÅÅĞò 
+//å‚¨æˆ·å–æ¬¾å‡½æ•°
+void After_1(List L)//æŒ‰ä»å¤§åˆ°å°æ’åº 
 {
 	char pos[10];
 	float money;
-    /*ÎÒÓÃµÄÊÇ´¢»§ÕËºÅ£¬µ±È»Äã¿ÉÒÔÓÃÆäËûµÄ²éÑ¯Ìõ¼ş*/
+    /*æˆ‘ç”¨çš„æ˜¯å‚¨æˆ·è´¦å·ï¼Œå½“ç„¶ä½ å¯ä»¥ç”¨å…¶ä»–çš„æŸ¥è¯¢æ¡ä»¶*/
     
 //    time(&timep);
-//    q =localtime(&timep); //´Ëº¯Êı»ñµÃµÄtm½á¹¹ÌåµÄÊ±¼ä£¬ÊÇÒÑ¾­½øĞĞ¹ıÊ±Çø×ª»¯Îª±¾µØÊ±¼ä
+//    q =localtime(&timep); //æ­¤å‡½æ•°è·å¾—çš„tmç»“æ„ä½“çš„æ—¶é—´ï¼Œæ˜¯å·²ç»è¿›è¡Œè¿‡æ—¶åŒºè½¬åŒ–ä¸ºæœ¬åœ°æ—¶é—´
 	
 		
-	printf("ÇëÏëÒªÈ¡¿î´¢»§ÕËºÅ:\n");
+	printf("è¯·æƒ³è¦å–æ¬¾å‚¨æˆ·è´¦å·:\n");
 	scanf("%s",pos);
 	while(L)
 	{
 		if(!strcmp(L->p.card_id,pos))
 		{
-			printf("ÇëÊäÈëÈ¡¿î¶î¶È\n");
+			printf("è¯·è¾“å…¥å–æ¬¾é¢åº¦\n");
 				scanf("%f",&money);
 				if(L->p.account-money>0){ 
 					L->p.account-=money;
-					printf("È¡¿î³É¹¦");
+					printf("å–æ¬¾æˆåŠŸ");
 				}					
 //				L->t.day[]=1900+q->tm_year;
 //				L->t.month=1+q->tm_mon;
@@ -267,39 +267,39 @@ void After_1(List L)//°´´Ó´óµ½Ğ¡ÅÅĞò
 //				L->t.minutes=q->tm_min;
 //				L->t.second=q->tm_sec;
 				else
-					printf("È¡¿îÊ§°Ü");								 
+					printf("å–æ¬¾å¤±è´¥");								 
             getchar();getchar();
 			return; 
 		}
 		L=L->next;
 	}
-	printf("´æ´¢Ê§°Ü!\n");
+	printf("å­˜å‚¨å¤±è´¥!\n");
 	getchar();getchar();
 }
 void menu(){
 
 		system("cls");
-		printf("             »îÆÚ´¢´æÕËÄ¿¹ÜÀíÏµÍ³       \n");
+		printf("             æ´»æœŸå‚¨å­˜è´¦ç›®ç®¡ç†ç³»ç»Ÿ       \n");
 		printf("=========================================\n");
-		printf("|             1.´¢»§¿ª»§                |\n");
-		printf("|             2.´¢»§Ïú»§           	|\n");
-		printf("|             3.´¢»§´æ¿î             	|\n");
-		printf("|             4.´¢»§È¡¿î                |\n");
-		printf("|             5.Óà¶î²éÑ¯              	|\n");
-		printf("|             6.½»Ò×Ã÷Ï¸             	|\n");
-		printf("|             7.ĞÅÏ¢´æ´¢                |\n");
-		printf("|             8.ĞÅÏ¢¶ÁÈ¡                |\n");
-		printf("|             0.ÍË³öÏµÍ³                |\n");
+		printf("|             1.å‚¨æˆ·å¼€æˆ·                |\n");
+		printf("|             2.å‚¨æˆ·é”€æˆ·           	|\n");
+		printf("|             3.å‚¨æˆ·å­˜æ¬¾             	|\n");
+		printf("|             4.å‚¨æˆ·å–æ¬¾                |\n");
+		printf("|             5.ä½™é¢æŸ¥è¯¢              	|\n");
+		printf("|             6.äº¤æ˜“æ˜ç»†             	|\n");
+		printf("|             7.ä¿¡æ¯å­˜å‚¨                |\n");
+		printf("|             8.ä¿¡æ¯è¯»å–                |\n");
+		printf("|             0.é€€å‡ºç³»ç»Ÿ                |\n");
 		printf("=========================================\n");
-		printf("ÇëÊäÈëÄúµÄÑ¡Ôñ:");
+		printf("è¯·è¾“å…¥æ‚¨çš„é€‰æ‹©:");
 }
 void exit(){
-	printf("ÍË³öÏµÍ³³É¹¦!");
+	printf("é€€å‡ºç³»ç»ŸæˆåŠŸ!");
 	exit(0);
 }
 void filewriting(List L){
 	
-	fp = fopen("text.txt", "w");    //´ò¿ªÎÄ¼ş£¬²¢ÇÒ°ÑÎÄ¼şÉèÖÃÎª¿ÉĞ´×´Ì¬
+	fp = fopen("text.txt", "w");    //æ‰“å¼€æ–‡ä»¶ï¼Œå¹¶ä¸”æŠŠæ–‡ä»¶è®¾ç½®ä¸ºå¯å†™çŠ¶æ€
 	while(L)
     {
             	fprintf(fp,"%s %s %s %s %f\n",
@@ -307,32 +307,32 @@ void filewriting(List L){
                 	L->p.card_id,
                 	L->p.peo_id,
                 	L->p.phone_num,
-               	    L->p.account);//½«Á´±íÀïÍ·µÄÊı¾İ´æ´¢µÄ text.txtÎÄ¼şÀïÈ¥¡£				                        
+               	    L->p.account);//å°†é“¾è¡¨é‡Œå¤´çš„æ•°æ®å­˜å‚¨çš„ text.txtæ–‡ä»¶é‡Œå»ã€‚				                        
             		L=L->next;    
     }
-    		printf("´æ´¢ĞÅÏ¢³É¹¦"); 
-    		fclose(fp);        //¹Ø±ÕÎÄ¼ş
+    		printf("å­˜å‚¨ä¿¡æ¯æˆåŠŸ"); 
+    		fclose(fp);        //å…³é—­æ–‡ä»¶
 }
 
 List fileread(List L){
 
-	fp = fopen("text.txt", "r");    //´ò¿ªÎÄ¼ş£¬²¢ÇÒ°ÑÎÄ¼şÉèÖÃÎª¿ÉĞ´×´Ì¬
-	while(!feof(fp))				//feop Ò»Ö±µ½ÎÄ¼şĞÅÏ¢×îºó Ò»¸ö'/0' 
+	fp = fopen("text.txt", "r");    //æ‰“å¼€æ–‡ä»¶ï¼Œå¹¶ä¸”æŠŠæ–‡ä»¶è®¾ç½®ä¸ºå¯å†™çŠ¶æ€
+	while(!feof(fp))				//feop ä¸€ç›´åˆ°æ–‡ä»¶ä¿¡æ¯æœ€å ä¸€ä¸ª'/0' 
 	{ 
-		fscanf(fp,"%s %s %s %s %f\n",    	//½«ÎÄ¼şÀïÍ·µÄÊı¾İtext.txt ´æ´¢µ½Á´±íÀïÈ¥
+		fscanf(fp,"%s %s %s %s %f\n",    	//å°†æ–‡ä»¶é‡Œå¤´çš„æ•°æ®text.txt å­˜å‚¨åˆ°é“¾è¡¨é‡Œå»
                		Temp.name,
                 	Temp.card_id,
                 	Temp.peo_id,
                 	Temp.phone_num,
                	   &Temp.account
         );			
-		List pe=(List)malloc(sizeof(LNode));       //´´½¨Ò»¸öĞÂ½Úµã
-        	pe->p=Temp;                              //¶Ô½Úµã´¢»§ĞÅÏ¢¸³Öµ
+		List pe=(List)malloc(sizeof(LNode));       //åˆ›å»ºä¸€ä¸ªæ–°èŠ‚ç‚¹
+        	pe->p=Temp;                              //å¯¹èŠ‚ç‚¹å‚¨æˆ·ä¿¡æ¯èµ‹å€¼
         	pe->next=NULL;							  
-        	L=addToList(L,pe);                         //Í·²å·¨Ìí¼Ó½Úµã
+        	L=addToList(L,pe);                         //å¤´æ’æ³•æ·»åŠ èŠ‚ç‚¹
 	}
-    	fclose(fp);				          //¹Ø±ÕÎÄ¼ş
-	printf("¶ÁÈ¡ĞÅÏ¢³É¹¦");
+    	fclose(fp);				          //å…³é—­æ–‡ä»¶
+	printf("è¯»å–ä¿¡æ¯æˆåŠŸ");
 	getchar();getchar(); 
     	return L;											
 }
