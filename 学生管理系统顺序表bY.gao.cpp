@@ -101,7 +101,7 @@ void Insert(List L,stu value){
 		return;
 	}
 		
-        for(int i=L->last;i>index;i--)
+        for(int i=L->last;i>=index;i--)
             L->array[i+1]=L->array[i];				//从后往前依次挪动 空出一个位置出来 
 			           
             L->array[index]=value;				//学生数组的插入          
