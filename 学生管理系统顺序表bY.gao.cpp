@@ -84,14 +84,14 @@ int main(){
 } 
 List MakeEmpty(){
 	List L;
-	L=(List)malloc(sizeof(LNode));				//给指针分配内存 
+	L=(List)malloc(sizeof(struct LNode));				//给指针分配内存 
     	L->array=(stu*)malloc(sizeof(stu)*MAXSIZE);		//给学生数组分配空间 
     	L->last=-1;						//此时还没有学生,即初始值指向-1 
 	return L;  
 }
 //顺序表的按序号插入 
 void Insert(List L,stu value){
-	int index;
+	int index,i;
 	printf("请输入插入序号:\n");
 	scanf("%d",&index);
 	//判断是否可以插入 
@@ -101,7 +101,7 @@ void Insert(List L,stu value){
 		return;
 	}
 		
-        for(int i=L->last;i>=index;i--)
+        for(i=L->last;i>=index;i--)
             L->array[i+1]=L->array[i];				//从后往前依次挪动 空出一个位置出来 
 			           
             L->array[index]=value;				//学生数组的插入          
@@ -111,12 +111,12 @@ void Insert(List L,stu value){
 }
 //顺序表的删除
 void Delete(List L){
-        int index;
+        int index,i;
         printf("请输入你要删除学生的编号:\n");
         scanf("%d",&index);
         
         if(index>=0&&index<=L->last){			        	//判断删除条件 
-            for(int i=index;i<L->last;i++)
+            for(i=index;i<L->last;i++)
                 L->array[i]=L->array[i+1];				//挪动覆盖掉就行了            
                 L->last--;						//长度减小
 	printf("删除成功!!"); 
@@ -152,7 +152,8 @@ void  Find(List L){
 //顺序表的显示
 void Show(List L)
 {
-	for(int i=0;i<=L->last;i++){
+        int i;
+	for(i=0;i<=L->last;i++){
 		printf("学号:%d 姓名:%s 年龄:%d 学院:%s 班级:%s\n",
 		L->array[i].stu_number,
 		L->array[i].stu_name,
@@ -219,13 +220,14 @@ void input()
 }
 void fileWrite(List L){
 	/*写入文件过程*/
+       int i;
     if(L->last==-1){            	//说明此时没有学生数据
         printf("存储学生信息失败");
         getchar();getchar(); 
         return;
         }
     fp = fopen("text.txt", "w");     	//打开文件，并且把它设置为可写状态
-    for(int i=0;i<=L->last;i++){     	//依次把所有学生信息存入text.txt
+    for(i=0;i<=L->last;i++){     	//依次把所有学生信息存入text.txt
         fprintf(fp,"%lld %s %d %s %s\n",
             L->array[i].stu_number,
             L->array[i].stu_name,
