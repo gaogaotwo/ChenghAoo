@@ -3,14 +3,14 @@
 //struct Operation{
 //
 //	char operation[20];
-//	int Status;						//½ø³Ì×´Ì¬	 
-//	int Time_arrival;				//µ½´ïÊ±¼ä 
-//	int Time_elapsed;				//ÔËĞĞÊ±¼ä 
-//	int Time_Start;					//¿ªÊ¼Ê±¼ä
-//	int Time_Completion;			//Íê³ÉÊ±¼ä
-//	int Turnaround_time;	 		//ÖÜ×ªÊ±¼ä
-//	float _timeWeighted_Turnaround; //´øÈ¨ÖÜ×ªÊ±¼ä 
-//	int Priority;					//ÓÅÏÈ¼¶ 
+//	int Status;						//è¿›ç¨‹çŠ¶æ€	 
+//	int Time_arrival;					//åˆ°è¾¾æ—¶é—´ 
+//	int Time_elapsed;					//è¿è¡Œæ—¶é—´ 
+//	int Time_Start;						//å¼€å§‹æ—¶é—´
+//	int Time_Completion;					//å®Œæˆæ—¶é—´
+//	int Turnaround_time;	 				//å‘¨è½¬æ—¶é—´
+//	float _timeWeighted_Turnaround; 			//å¸¦æƒå‘¨è½¬æ—¶é—´ 
+//	int Priority;						//ä¼˜å…ˆçº§ 
 //};
 //typedef struct VNode *PtrToAdjVNode;
 //
@@ -32,10 +32,10 @@
 //	
 //	PCB P1,P2;
 //		
-//	P2=CreatProcess(P2); 			//ÏÈÀ´ÏÈ·şÎñ·¨
+//	P2=CreatProcess(P2); 			//å…ˆæ¥å…ˆæœåŠ¡æ³•
 //	Process_Scheduling(P2);
 //	
-//	P1=CreatProcess(P1);			//¶Ì×÷ÒµÓÅÏÈ·¨
+//	P1=CreatProcess(P1);			//çŸ­ä½œä¸šä¼˜å…ˆæ³•
 //	Process_Short(P1);
 //
 //
@@ -47,8 +47,8 @@
 //
 //	int Pos;
 //	
-//	/*Í·½áµã·ÖÅäÄÚ´æ
-//	²ÉÓÃµÄÊÇÍ·½áµã²»¶¯£¬Í¨¹ıÎ²²¿Ö¸ÕëµÄÒÆ¶¯´Ó¶ø ¶ÔÁ´±íÖµ½øĞĞ±ä»¯ 
+//	/*å¤´ç»“ç‚¹åˆ†é…å†…å­˜
+//	é‡‡ç”¨çš„æ˜¯å¤´ç»“ç‚¹ä¸åŠ¨ï¼Œé€šè¿‡å°¾éƒ¨æŒ‡é’ˆçš„ç§»åŠ¨ä»è€Œ å¯¹é“¾è¡¨å€¼è¿›è¡Œå˜åŒ– 
 //	*/
 //	Head=(PCB)malloc(sizeof(struct VNode));
 //	Head->Next=NULL;
@@ -56,28 +56,28 @@
 //	PCB P2=Head; 
 //	
 //	
-//	printf("ÇëÒÀ´ÎÊäÈë×÷ÒµÃû ½ø³Ì×´Ì¬ µ½´ïÊ±¼ä ÔËĞĞÊ±¼ä ÓÅÏÈ¼¶\n");
+//	printf("è¯·ä¾æ¬¡è¾“å…¥ä½œä¸šå è¿›ç¨‹çŠ¶æ€ åˆ°è¾¾æ—¶é—´ è¿è¡Œæ—¶é—´ ä¼˜å…ˆçº§\n");
 //	scanf("%s %d %d %d %d",Head->X.operation,&Head->X.Status,&Head->X.Time_arrival,&Head->X.Time_elapsed,&Head->X.Priority); 
-//	printf("ÊÇ·ñ¼ÌĞø²åÈë 1 / 0\n");
+//	printf("æ˜¯å¦ç»§ç»­æ’å…¥ 1 / 0\n");
 //	scanf("%d",&Pos);
 //	if(Pos==0)
 //		return Head; 
 //
 //	while(1){	
 //	P1=(PCB)malloc(sizeof(struct VNode));
-//	/*¶ÔÓÚp1 ½øĞĞ¸³Öµ²Ù×÷*/
-//	printf("ÇëÒÀ´ÎÊäÈë×÷ÒµÃû ½ø³Ì×´Ì¬ µ½´ïÊ±¼ä ÔËĞĞÊ±¼ä ÓÅÏÈ¼¶\n");
+//	/*å¯¹äºp1 è¿›è¡Œèµ‹å€¼æ“ä½œ*/
+//	printf("è¯·ä¾æ¬¡è¾“å…¥ä½œä¸šå è¿›ç¨‹çŠ¶æ€ åˆ°è¾¾æ—¶é—´ è¿è¡Œæ—¶é—´ ä¼˜å…ˆçº§\n");
 //	scanf("%s %d %d %d %d",P1->X.operation,&P1->X.Status,&P1->X.Time_arrival,&P1->X.Time_elapsed,&P1->X.Priority); 
 //		
-//	P2->Next=P1;		//¸ü¸ÄÎ²Ö¸Õë 
+//	P2->Next=P1;		//æ›´æ”¹å°¾æŒ‡é’ˆ 
 //	P2=P1; 			
 //
-//	printf("ÊÇ·ñ¼ÌĞø²åÈë 1 / 0\n");
+//	printf("æ˜¯å¦ç»§ç»­æ’å…¥ 1 / 0\n");
 //	scanf("%d",&Pos);
 //	if(Pos==0)
 //		break;
 //}
-//	/*²åÈëÍê±Ïºó Î²Ö¸ÕëÖ¸Ïò*/ 
+//	/*æ’å…¥å®Œæ¯•å å°¾æŒ‡é’ˆæŒ‡å‘*/ 
 //	P2->Next=NULL;
 //	 
 //	return Head;
@@ -87,9 +87,9 @@
 //	PCB M=P;
 //	int _Turnaround_time=0,sum=0;
 //	float averageLy=0;
-//	/*Ä¬ÈÏ µÚÒ»¸ö×÷Òµ¿ªÊ¼Ê±¼äÎª 0
-//		   ²¢ÇÒÖÜ×ªÊ±¼ä,ÓëÍê³ÉÊ±¼äµÈÓÚÔËĞĞÊ±¼ä
-//		   ²¢ÇÒ´øÈ¨ÖÜ×ªÊ±¼äÎª 1	
+//	/*é»˜è®¤ ç¬¬ä¸€ä¸ªä½œä¸šå¼€å§‹æ—¶é—´ä¸º 0
+//		   å¹¶ä¸”å‘¨è½¬æ—¶é—´,ä¸å®Œæˆæ—¶é—´ç­‰äºè¿è¡Œæ—¶é—´
+//		   å¹¶ä¸”å¸¦æƒå‘¨è½¬æ—¶é—´ä¸º 1	
 //	*/
 //	M->X.Time_Start=0;		
 //	M->X.Turnaround_time=M->X.Time_elapsed;
@@ -105,19 +105,19 @@
 //	 
 //	while(M){
 //		M->X.Time_Start=_Turnaround_time;
-//		M->X.Time_Completion=M->X.Time_Start+M->X.Time_elapsed;				//Íê³ÉÊ±¼ä µÈÓÚ ¿ªÊ¼Ê±¼ä + ÔËĞĞÊ±¼ä 
-//		M->X.Turnaround_time=M->X.Time_Completion-M->X.Time_arrival; 		//ÖÜ×ªÊ±¼ä µÈÓÚ Íê³ÉÊ±¼ä - µ½´ïÊ±¼ä
-//		M->X._timeWeighted_Turnaround=M->X.Turnaround_time/(float)(M->X.Time_elapsed);	//´øÈ¨ÖÜ×ªÊ±¼ä µÈÓÚ ÖÜ×ªÊ±¼ä / ÔËĞĞÊ±¼ä 
+//		M->X.Time_Completion=M->X.Time_Start+M->X.Time_elapsed;				//å®Œæˆæ—¶é—´ ç­‰äº å¼€å§‹æ—¶é—´ + è¿è¡Œæ—¶é—´ 
+//		M->X.Turnaround_time=M->X.Time_Completion-M->X.Time_arrival; 		//å‘¨è½¬æ—¶é—´ ç­‰äº å®Œæˆæ—¶é—´ - åˆ°è¾¾æ—¶é—´
+//		M->X._timeWeighted_Turnaround=M->X.Turnaround_time/(float)(M->X.Time_elapsed);	//å¸¦æƒå‘¨è½¬æ—¶é—´ ç­‰äº å‘¨è½¬æ—¶é—´ / è¿è¡Œæ—¶é—´ 
 //		_Turnaround_time=M->X.Time_Completion;
-//		/*Æ½¾ùÖÜ×ªÊ±¼ä*/		
+//		/*å¹³å‡å‘¨è½¬æ—¶é—´*/		
 //		averageLy+=M->X.Turnaround_time;
 //		sum++;
 //		
 //		M=M->Next;
 //	}
 //	
-//	printf("-----------------------------ÏÈÀ´ÏÈ·şÎñ·¨FCFS-----------------------\n");
-//	printf("×÷Òµ  µ½´ïÊ±¼ä  ÔËĞĞÊ±¼ä  ¿ªÊ¼Ê±¼ä  Íê³ÉÊ±¼ä  ÖÜ×ªÊ±¼ä  ´øÈ¨ÖÜ×ªÊ±¼ä  \n");
+//	printf("-----------------------------å…ˆæ¥å…ˆæœåŠ¡æ³•FCFS-----------------------\n");
+//	printf("ä½œä¸š  åˆ°è¾¾æ—¶é—´  è¿è¡Œæ—¶é—´  å¼€å§‹æ—¶é—´  å®Œæˆæ—¶é—´  å‘¨è½¬æ—¶é—´  å¸¦æƒå‘¨è½¬æ—¶é—´  \n");
 //	while(P){	
 //	printf("%s   %5d  	%5d   %5d  	   %5d    %5d  	%5.2f\n",P->X.operation,P->X.Time_arrival,P->X.Time_elapsed
 //		,P->X.Time_Start,P->X.Time_Completion
@@ -125,7 +125,7 @@
 //	);
 //		P=P->Next;	
 //	}
-//	printf("Æ½¾ùÖÜ×ªÊ±¼äÎª:%.2f\n",averageLy/(float)(sum)); 
+//	printf("å¹³å‡å‘¨è½¬æ—¶é—´ä¸º:%.2f\n",averageLy/(float)(sum)); 
 //	printf("--------------------------------------------------------------------\n"); 
 ////	while(P){
 ////		printf("%s\n",P->X.operation);
@@ -135,7 +135,7 @@
 //void Process_Short(PCB P){
 //
 //	PCB M1=P;
-//	/*Ä¬ÈÏ½ø³Ì¶¼ÊÇÍ¬Ê±µ½´ïµÄ */
+//	/*é»˜è®¤è¿›ç¨‹éƒ½æ˜¯åŒæ—¶åˆ°è¾¾çš„ */
 //	while(M1){
 //		M1->X.Time_arrival=0; 
 //		M1=M1->Next;
@@ -145,14 +145,14 @@
 //	Operation Temp; 
 //	int Num1,Num2;
 //	
-//	/*²ÉÓÃµÄÊÇÑ¡ÔñÅÅĞòµÄÊÖ·¨,ÏÈ¸ù¾İ×÷ÒµÍê³ÉÊ±¼ä½øĞĞÅÅĞò*/
+//	/*é‡‡ç”¨çš„æ˜¯é€‰æ‹©æ’åºçš„æ‰‹æ³•,å…ˆæ ¹æ®ä½œä¸šå®Œæˆæ—¶é—´è¿›è¡Œæ’åº*/
 //	while(Big){		
 //		Num1=Big->X.Time_elapsed;
 //		Small=Big;
 //		while(Small){
 //			Num2=Small->X.Time_elapsed;
 //			if(Num1>Num2){
-//				Temp=Big->X;			// ×¢ÒâÊÇÓÃÑ§ÉúÁÙÊ±½Úµã×÷ÎªÊı¾İÓò	
+//				Temp=Big->X;			// æ³¨æ„æ˜¯ç”¨å­¦ç”Ÿä¸´æ—¶èŠ‚ç‚¹ä½œä¸ºæ•°æ®åŸŸ	
 //				Big->X=Small->X;
 //				Small->X=Temp;
 //			}
@@ -164,9 +164,9 @@
 //	PCB M=P;
 //	int _Turnaround_time=0,sum=0;
 //	float averageLy=0;
-//	/*Ä¬ÈÏ µÚÒ»¸ö×÷Òµ¿ªÊ¼Ê±¼äÎª 0
-//		   ²¢ÇÒÖÜ×ªÊ±¼ä,ÓëÍê³ÉÊ±¼äµÈÓÚÔËĞĞÊ±¼ä
-//		   ²¢ÇÒ´øÈ¨ÖÜ×ªÊ±¼äÎª 1	
+//	/*é»˜è®¤ ç¬¬ä¸€ä¸ªä½œä¸šå¼€å§‹æ—¶é—´ä¸º 0
+//		   å¹¶ä¸”å‘¨è½¬æ—¶é—´,ä¸å®Œæˆæ—¶é—´ç­‰äºè¿è¡Œæ—¶é—´
+//		   å¹¶ä¸”å¸¦æƒå‘¨è½¬æ—¶é—´ä¸º 1	
 //	*/
 //	M->X.Time_Start=0;		
 //	M->X.Turnaround_time=M->X.Time_elapsed;
@@ -182,19 +182,19 @@
 //	 
 //	while(M){
 //		M->X.Time_Start=_Turnaround_time;
-//		M->X.Time_Completion=M->X.Time_Start+M->X.Time_elapsed;				//Íê³ÉÊ±¼ä µÈÓÚ ¿ªÊ¼Ê±¼ä + ÔËĞĞÊ±¼ä 
-//		M->X.Turnaround_time=M->X.Time_Completion-M->X.Time_arrival; 		//ÖÜ×ªÊ±¼ä µÈÓÚ Íê³ÉÊ±¼ä - µ½´ïÊ±¼ä
-//		M->X._timeWeighted_Turnaround=M->X.Turnaround_time/(float)(M->X.Time_elapsed);	//´øÈ¨ÖÜ×ªÊ±¼ä µÈÓÚ ÖÜ×ªÊ±¼ä / ÔËĞĞÊ±¼ä 
+//		M->X.Time_Completion=M->X.Time_Start+M->X.Time_elapsed;				//å®Œæˆæ—¶é—´ ç­‰äº å¼€å§‹æ—¶é—´ + è¿è¡Œæ—¶é—´ 
+//		M->X.Turnaround_time=M->X.Time_Completion-M->X.Time_arrival; 		//å‘¨è½¬æ—¶é—´ ç­‰äº å®Œæˆæ—¶é—´ - åˆ°è¾¾æ—¶é—´
+//		M->X._timeWeighted_Turnaround=M->X.Turnaround_time/(float)(M->X.Time_elapsed);	//å¸¦æƒå‘¨è½¬æ—¶é—´ ç­‰äº å‘¨è½¬æ—¶é—´ / è¿è¡Œæ—¶é—´ 
 //		_Turnaround_time=M->X.Time_Completion;
-//		/*Æ½¾ùÖÜ×ªÊ±¼ä*/		
+//		/*å¹³å‡å‘¨è½¬æ—¶é—´*/		
 //		averageLy+=M->X.Turnaround_time;
 //		sum++;
 //		
 //		M=M->Next;
 //	}
 //	
-//	printf("------------------------------¶Ì×÷ÒµÓÅÏÈ·¨SJF-----------------------------\n");
-//	printf("×÷Òµ  µ½´ïÊ±¼ä  ÔËĞĞÊ±¼ä  ¿ªÊ¼Ê±¼ä  Íê³ÉÊ±¼ä  ÖÜ×ªÊ±¼ä  ´øÈ¨ÖÜ×ªÊ±¼ä  \n");
+//	printf("------------------------------çŸ­ä½œä¸šä¼˜å…ˆæ³•SJF-----------------------------\n");
+//	printf("ä½œä¸š  åˆ°è¾¾æ—¶é—´  è¿è¡Œæ—¶é—´  å¼€å§‹æ—¶é—´  å®Œæˆæ—¶é—´  å‘¨è½¬æ—¶é—´  å¸¦æƒå‘¨è½¬æ—¶é—´  \n");
 //	while(P){	
 //	printf("%s   %5d  	%5d   %5d  	   %5d    %5d  	%5.2f\n",P->X.operation,P->X.Time_arrival,P->X.Time_elapsed
 //		,P->X.Time_Start,P->X.Time_Completion
@@ -202,7 +202,7 @@
 //	);
 //		P=P->Next;	
 //	}
-//	printf("Æ½¾ùÖÜ×ªÊ±¼äÎª:%.2f\n",averageLy/(float)(sum));
+//	printf("å¹³å‡å‘¨è½¬æ—¶é—´ä¸º:%.2f\n",averageLy/(float)(sum));
 //	printf("--------------------------------------------------------------------\n");
 //
 //} 
@@ -241,7 +241,7 @@
 //	pthread_t tcb2;
 //	pthread_t tcb3;
 //	
-//	/*´´½¨½ø³Ì ¸¸Ç× Ä¸Ç× Å®¶ù ¶ù×Ó*/ 
+//	/*åˆ›å»ºè¿›ç¨‹ çˆ¶äº² æ¯äº² å¥³å„¿ å„¿å­*/ 
 //	pthread_create(&tcb0,NULL,Father,NULL);
 //	pthread_create(&tcb1,NULL,Mother,NULL);
 //	pthread_create(&tcb2,NULL,Daughter,NULL);
@@ -254,17 +254,17 @@
 //void * Father(void *p){
 //
 //	while(Pos<=sum){
-//		P(empty);					//±íÊ¾¸¸Ç×Æ»¹û·ÅÈë»º³åÇø		
-//		printf("¸¸Ç×ÏòÅÌ×Ó·ÅÆ»¹û\n%d ´Î\n",Pos);
-//		V(apple_full);				//·ÅÈëÆ»¹û
+//		P(empty);					//è¡¨ç¤ºçˆ¶äº²è‹¹æœæ”¾å…¥ç¼“å†²åŒº		
+//		printf("çˆ¶äº²å‘ç›˜å­æ”¾è‹¹æœ\n%d æ¬¡\n",Pos);
+//		V(apple_full);				//æ”¾å…¥è‹¹æœ
 //		Pos++; 
 //	}
 //}
 //void * Mother(void *p){
 //
 //	while(Pos<=sum){
-//		P(empty);					//±íÊ¾Ä¸Ç×Ë®¹û·ÅÈë»º³åÇø 
-//		printf("Ä¸Ç×ÏòÅÌ×Ó·ÅéÙ×Ó\n%d ´Î\n",Pos);
+//		P(empty);					//è¡¨ç¤ºæ¯äº²æ°´æœæ”¾å…¥ç¼“å†²åŒº 
+//		printf("æ¯äº²å‘ç›˜å­æ”¾æ©˜å­\n%d æ¬¡\n",Pos);
 //		V(orange_full);
 //		Pos++;
 //	}
@@ -273,9 +273,9 @@
 //void *Daughter(void *p){
 //
 //	while(Pos<=sum){	
-//		P(apple_full);				//±íÊ¾ ²é¿´ Æ»¹ûÊÇ·ñÔÚ ÅÌ×ÓÖĞ  
-//		printf("Å®¶ùÏòÅÌ×ÓÈ¡Æ»¹û\n%d ´Î\n",Pos);
-//		V(empty);					//Å®¶ù È¡³öÆ»¹û 
+//		P(apple_full);				//è¡¨ç¤º æŸ¥çœ‹ è‹¹æœæ˜¯å¦åœ¨ ç›˜å­ä¸­  
+//		printf("å¥³å„¿å‘ç›˜å­å–è‹¹æœ\n%d æ¬¡\n",Pos);
+//		V(empty);					//å¥³å„¿ å–å‡ºè‹¹æœ 
 //		Pos++;
 //	}
 //
@@ -284,29 +284,29 @@
 //
 //	while(Pos<=sum){
 //	
-//		P(orange_full);				//±íÊ¾ ²é¿´ éÙ×ÓÊÇ·ñÔÚ ÅÌ×ÓÖĞ
-//		printf("¶ù×ÓÏòÅÌ×ÓÈ¡éÙ×Ó\n%d ´Î\n",Pos);
-//		V(empty);					//¶ù×Ó È¡³öéÙ×Ó
+//		P(orange_full);				//è¡¨ç¤º æŸ¥çœ‹ æ©˜å­æ˜¯å¦åœ¨ ç›˜å­ä¸­
+//		printf("å„¿å­å‘ç›˜å­å–æ©˜å­\n%d æ¬¡\n",Pos);
+//		V(empty);					//å„¿å­ å–å‡ºæ©˜å­
 //		Pos++; 
 //	}
 //} 
  
 #include <iostream>
 using namespace std; 
-//È«¾Ö±äÁ¿¶¨Òå
-int Available[100]; 	  //¿ÉÀûÓÃ×ÊÔ´ÊıÄ¿ 
-int Max[50][100];   	  //µÚM¸ö½ø³Ì ×î´ó×ÊÔ´ĞèÇó  
-int Allocation[50][100];  //µÚM¸ö½ø³Ì ·ÖÅäµÄ×ÊÔ´Êı 
-int Need[50][100];        //µÚ M¸ö½ø³Ì»¹ĞèÒªNÀà×ÊÔ´µÄ×ÊÔ´Á¿
-int Request[50][100];     //µÚ M¸ö½ø³Ì·¢³öÇëÇóNÀà ×ÊÔ´µÄ×ÊÔ´Á¿
+//å…¨å±€å˜é‡å®šä¹‰
+int Available[100]; 	  //å¯åˆ©ç”¨èµ„æºæ•°ç›® 
+int Max[50][100];   	  //ç¬¬Mä¸ªè¿›ç¨‹ æœ€å¤§èµ„æºéœ€æ±‚  
+int Allocation[50][100];  //ç¬¬Mä¸ªè¿›ç¨‹ åˆ†é…çš„èµ„æºæ•° 
+int Need[50][100];        //ç¬¬ Mä¸ªè¿›ç¨‹è¿˜éœ€è¦Nç±»èµ„æºçš„èµ„æºé‡
+int Request[50][100];     //ç¬¬ Mä¸ªè¿›ç¨‹å‘å‡ºè¯·æ±‚Nç±» èµ„æºçš„èµ„æºé‡
 int Finish[50];
-int p[50];				  //¼ÇÂ¼°²È«ĞòÁĞ 
-int m,n;   				  //M¸ö½ø³Ì,NÀà×ÊÔ´
-//°²È«ĞÔËã·¨
+int p[50];				  //è®°å½•å®‰å…¨åºåˆ— 
+int m,n;   				  //Mä¸ªè¿›ç¨‹,Nç±»èµ„æº
+//å®‰å…¨æ€§ç®—æ³•
 int SecuritY()                      
 {
     int i,j,l=0;
-    int Work[100]; //¿ÉÀûÓÃ×ÊÔ´Êı×é
+    int Work[100]; //å¯åˆ©ç”¨èµ„æºæ•°ç»„
     
     for (i=0;i<n;i++)
         Work[i]=Available[i];
@@ -314,7 +314,7 @@ int SecuritY()
     for (i=0;i<m;i++)
         Finish[i]=0;
      
-	/*Í¨¹ı i ¶ÔÓ¦µÄM¸ö±éÀú½ø³Ì ¿´ÊÇ·ñ½ø³Ì´¦ÓÚ°²È«×´Ì¬*/    
+	/*é€šè¿‡ i å¯¹åº”çš„Mä¸ªéå†è¿›ç¨‹ çœ‹æ˜¯å¦è¿›ç¨‹å¤„äºå®‰å…¨çŠ¶æ€*/    
     for (i=0;i<m;i++)	 
     {
         if (Finish[i]==1)	
@@ -339,8 +339,8 @@ int SecuritY()
     }
     if (l==m)
         {
-            cout<<"ÏµÍ³ÊÇ°²È«µÄ"<<'\n';
-            cout<<"ÏµÍ³°²È«ĞòÁĞÊÇ:\n";
+            cout<<"ç³»ç»Ÿæ˜¯å®‰å…¨çš„"<<'\n';
+            cout<<"ç³»ç»Ÿå®‰å…¨åºåˆ—æ˜¯:\n";
             for (i=0;i<l;i++)
             {
                 cout<<p[i];
@@ -351,45 +351,45 @@ int SecuritY()
             return 1;
         }
     else{
-		cout<<"ÏµÍ³ÊÇ²»°²È«µÄ"<<'\n';
+		cout<<"ç³»ç»Ÿæ˜¯ä¸å®‰å…¨çš„"<<'\n';
 		cout<<'\n';
 		return 0; 
 	}
 }
-//ÒøĞĞ¼ÒËã·¨
+//é“¶è¡Œå®¶ç®—æ³•
 int main()
 {
     int i,j,mi;
-    cout<<"ÊäÈë½ø³ÌµÄÊıÄ¿:\n";
+    cout<<"è¾“å…¥è¿›ç¨‹çš„æ•°ç›®:\n";
     cin>>m;
-    cout<<"ÊäÈë×ÊÔ´µÄÖÖÀà:\n";
+    cout<<"è¾“å…¥èµ„æºçš„ç§ç±»:\n";
     cin>>n;
-    cout<<"ÊäÈëÃ¿¸ö½ø³Ì×î¶àËùĞèµÄ¸÷Àà×ÊÔ´Êı,°´ÕÕ"<<m<<"x"<<n<<"¾ØÕóÊäÈë\n";
+    cout<<"è¾“å…¥æ¯ä¸ªè¿›ç¨‹æœ€å¤šæ‰€éœ€çš„å„ç±»èµ„æºæ•°,æŒ‰ç…§"<<m<<"x"<<n<<"çŸ©é˜µè¾“å…¥\n";
     for (i=0;i<m;i++)
         for(j= 0;j<n;j++)
             cin>>Max[i][j];
-    cout<<"ÊäÈëÃ¿¸ö½ø³ÌÒÑ¾­·ÖÅäµÄ¸÷Àà×ÊÔ´Êı,°´ÕÕ"<<m<<"x"<<n<<"¾ØÕóÊäÈë\n";
+    cout<<"è¾“å…¥æ¯ä¸ªè¿›ç¨‹å·²ç»åˆ†é…çš„å„ç±»èµ„æºæ•°,æŒ‰ç…§"<<m<<"x"<<n<<"çŸ©é˜µè¾“å…¥\n";
     for (i=0;i<m;i++){ 
         for(j=0;j<n;j++){       
             cin>>Allocation[i][j];
-            Need[i][j]=Max[i][j]-Allocation[i][j];	//µÚ i ¸ö×ÊÔ´ĞèÒªµÄ½ø³ÌÊı 
-            if (Need[i][j]<0){  					//ÅĞ¶ÏÊÇ·ñÊäÈëÕıÈ· 
-                cout<<"ÄãÊäÈëµÄµÚ"<<i+1<<"¸ö½ø³ÌËùÓµÓĞµÄµÚ"<<j+1<<"¸ö×ÊÔ´´íÎó£¬ÇëÖØĞÂÊäÈë:\n";
+            Need[i][j]=Max[i][j]-Allocation[i][j];	//ç¬¬ i ä¸ªèµ„æºéœ€è¦çš„è¿›ç¨‹æ•° 
+            if (Need[i][j]<0){  					//åˆ¤æ–­æ˜¯å¦è¾“å…¥æ­£ç¡® 
+                cout<<"ä½ è¾“å…¥çš„ç¬¬"<<i+1<<"ä¸ªè¿›ç¨‹æ‰€æ‹¥æœ‰çš„ç¬¬"<<j+1<<"ä¸ªèµ„æºé”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥:\n";
                 j--;
                 continue;
             }
         }
     }
-    cout<<"ÇëÊäÈë¸÷¸ö×ÊÔ´ÏÖÓĞµÄÊıÄ¿:\n";
+    cout<<"è¯·è¾“å…¥å„ä¸ªèµ„æºç°æœ‰çš„æ•°ç›®:\n";
     for (i=0;i<n;i++)
     	cin>>Available[i];
     SecuritY();
     
     while (1)
     {
-        cout<<"ÊäÈëÒªÉêÇëµÄ×ÊÔ´µÄ½ø³ÌºÅ£º£¨µÚÒ»¸ö½ø³ÌºÅÎª0£¬µÚ¶ş¸ö½ø³ÌºÅÎª1£¬ÒÀ´ËÀàÍÆ£©\n";
+        cout<<"è¾“å…¥è¦ç”³è¯·çš„èµ„æºçš„è¿›ç¨‹å·ï¼šï¼ˆç¬¬ä¸€ä¸ªè¿›ç¨‹å·ä¸º0ï¼Œç¬¬äºŒä¸ªè¿›ç¨‹å·ä¸º1ï¼Œä¾æ­¤ç±»æ¨ï¼‰\n";
         cin>>mi;
-        cout<<"ÊäÈë½ø³ÌËùÇëÇóµÄ¸÷¸ö×ÊÔ´µÄÊıÁ¿\n";
+        cout<<"è¾“å…¥è¿›ç¨‹æ‰€è¯·æ±‚çš„å„ä¸ªèµ„æºçš„æ•°é‡\n";
         for (i=0;i<n;i++)
         cin>>Request[mi][i];		
         for (i=0;i<n;i++)
@@ -397,12 +397,12 @@ int main()
 
             if (Request[mi][i]>Need[mi][i])
             {
-                cout<<"ËùÇëÇó×ÊÔ´Êı³¬¹ı½ø³ÌµÄĞèÇóÁ¿£¡\n";
+                cout<<"æ‰€è¯·æ±‚èµ„æºæ•°è¶…è¿‡è¿›ç¨‹çš„éœ€æ±‚é‡ï¼\n";
                 return 0;
             }
             if (Request[mi][i]>Available[i])
             {
-                cout<<"ËùÇëÇó×ÊÔ´Êı³¬¹ıÏµÍ³ËùÓĞµÄ×ÊÔ´Êı£¡\n";
+                cout<<"æ‰€è¯·æ±‚èµ„æºæ•°è¶…è¿‡ç³»ç»Ÿæ‰€æœ‰çš„èµ„æºæ•°ï¼\n";
                 return 0;
             }
         }
@@ -413,10 +413,10 @@ int main()
             Need[mi][i]-=Request[mi][i];
         }
         if (SecuritY())
-            cout<<"Í¬Òâ·ÖÅäÇëÇó\n";
+            cout<<"åŒæ„åˆ†é…è¯·æ±‚\n";
         else
         {
-            cout<<"ÄãµÄÇëÇó±»¾Ü¾ø¡­\n";
+            cout<<"ä½ çš„è¯·æ±‚è¢«æ‹’ç»â€¦\n";
             for (i=0;i<n;i++)
             {
                 Available[i]+=Request[mi][i];
@@ -426,8 +426,8 @@ int main()
         }
         for (i=0;i<m;i++) 
             Finish[i]=0;
-        char Flag;       //±êÖ¾Î»
-        cout<<"ÊÇ·ñÔÙ´ÎÇëÇó·ÖÅä£¿ÊÇÇë°´Y/y£¬·ñÇë°´N/n";
+        char Flag;       //æ ‡å¿—ä½
+        cout<<"æ˜¯å¦å†æ¬¡è¯·æ±‚åˆ†é…ï¼Ÿæ˜¯è¯·æŒ‰Y/yï¼Œå¦è¯·æŒ‰N/n";
         while (1)
         {
             cin>>Flag;
@@ -435,7 +435,7 @@ int main()
             break;
             else
             {
-                cout<<"Çë°´ÒªÇóÖØĞÂÊäÈë:\n";
+                cout<<"è¯·æŒ‰è¦æ±‚é‡æ–°è¾“å…¥:\n";
                 continue;
             }
         }
