@@ -1,43 +1,43 @@
 #include<bits/stdc++.h>
-#define MAXSIZE 10001  					//¿ØÖÆÖ°¹¤×î´óÈËÊı
+#define MAXSIZE 10001  					//æ§åˆ¶èŒå·¥æœ€å¤§äººæ•°
 typedef struct People{
-    long long Worker_id;  	 			//Ö°¹¤ºÅ 
-    char Name[12];			    		//ĞÕÃû
-	char Sex[12];						//ĞÔ±ğ 
-    int  Age;							//ÄêÁä 
-    char Edu[20];			        	//Ñ§Àú
-    float Salary;						//¹¤×÷
+    long long Worker_id;  	 			//èŒå·¥å· 
+    char Name[12];			    		//å§“å
+    char Sex[12];					//æ€§åˆ« 
+    int  Age;						//å¹´é¾„ 
+    char Edu[20];			        	//å­¦å†
+    float Salary;					//å·¥ä½œ
     /*
 	...
 	*/
 }peo;
-//Ë³Ğò±íµÄ¹¹½¨
+//é¡ºåºè¡¨çš„æ„å»º
 typedef struct LNode *PtrToAdjVNode;
 
 struct LNode{
-    int last;				        //Ö¸Ïò×îºóÒ»¸öÔªËØÏÂ±ê 
-    peo *array;						//Ö°¹¤Ö¸ÕëÊı×é 
+    int last;				        	//æŒ‡å‘æœ€åä¸€ä¸ªå…ƒç´ ä¸‹æ ‡ 
+    peo *array;						//èŒå·¥æŒ‡é’ˆæ•°ç»„ 
 };
 typedef PtrToAdjVNode List;
  
-peo temp;   							        //Ö°¹¤È«¾Ö±äÁ¿     
+peo temp;   							        //èŒå·¥å…¨å±€å˜é‡     
 
-//ÅÅĞò¹¦ÄÜ
-int Pos(List L,int Left,int Right);				//Ë³Ğò±íµÄÅÅĞò
+//æ’åºåŠŸèƒ½
+int Pos(List L,int Left,int Right);					//é¡ºåºè¡¨çš„æ’åº
 void Age_Sort(List L,int Left,int Right);
 
-List MakeEmpty();									//Ë³Ğò±íµÄ³õÊ¼»¯
+List MakeEmpty();							//é¡ºåºè¡¨çš„åˆå§‹åŒ–
 void Meum();									 
-void Insert(List L,People value);					//Ë³Ğò±íµÄ²åÈë 
-void Delete(List L); 								//Ë³Ğò±íµÄÉ¾³ı 
-void Find(List L);									//Ë³Ğò±íµÄ²éÑ¯ 
-void Show(List L);									//Õ¹Ê¾ĞÅÏ¢ 
-void After(List L);									//Ë³Ğò±íµÄĞŞ¸Ä 
-void login();							        	//½çÃæĞÅÏ¢ 
-void input();							        	//ÊäÈëÖ°¹¤ĞÅÏ¢ 
-void fileWrite(List L);     						//Ğ´ÈëÎÄ¼ş
-void fileRead(List L);      						//¶ÁÈ¡ÎÄ¼ş
-FILE *fp;                   						//ÎÄ¼ş±äÁ¿
+void Insert(List L,People value);					//é¡ºåºè¡¨çš„æ’å…¥ 
+void Delete(List L); 							//é¡ºåºè¡¨çš„åˆ é™¤ 
+void Find(List L);				  			//é¡ºåºè¡¨çš„æŸ¥è¯¢ 
+void Show(List L);							//å±•ç¤ºä¿¡æ¯ 
+void After(List L);							//é¡ºåºè¡¨çš„ä¿®æ”¹ 
+void login();							        //ç•Œé¢ä¿¡æ¯ 
+void input();							        //è¾“å…¥èŒå·¥ä¿¡æ¯ 
+void fileWrite(List L);     						//å†™å…¥æ–‡ä»¶
+void fileRead(List L);      						//è¯»å–æ–‡ä»¶
+FILE *fp;                   						//æ–‡ä»¶å˜é‡
 
 
 int main(){
@@ -46,22 +46,22 @@ int main(){
 	return 0;
 }
 List MakeEmpty(){
-	// Ë³Ğò±í³õÊ¼»¯
+	// é¡ºåºè¡¨åˆå§‹åŒ–
 	List L;
 	L = (List)malloc(sizeof(peo) * MAXSIZE);
 	L->last = -1;
 	return L;
 }
 void Meum(){
-	printf("\n\n\t\t\tÖ°¹¤ĞÅÏ¢¹ÜÀíÏµÍ³\n");
-	printf("\t\t\t1¡¢Ö°¹¤ĞÅÏ¢Â¼Èë\n");
-	printf("\t\t\t2¡¢ÏÔÊ¾ËùÓĞÖ°¹¤ĞÅÏ¢\n");
-	printf("\t\t\t3¡¢Í³¼Æ\n");
-	printf("\t\t\t4¡¢²éÑ¯\n");
-	printf("\t\t\t5¡¢ÅÅĞò\n");
-	printf("\t\t\t6¡¢ĞŞ¸Ä\n");
-	printf("\t\t\t7¡¢É¾³ı\n");
-	printf("\t\t\t8¡¢ÍË³öÏµÍ³\n");
+	printf("\n\n\t\t\tèŒå·¥ä¿¡æ¯ç®¡ç†ç³»ç»Ÿ\n");
+	printf("\t\t\t1ã€èŒå·¥ä¿¡æ¯å½•å…¥\n");
+	printf("\t\t\t2ã€æ˜¾ç¤ºæ‰€æœ‰èŒå·¥ä¿¡æ¯\n");
+	printf("\t\t\t3ã€ç»Ÿè®¡\n");
+	printf("\t\t\t4ã€æŸ¥è¯¢\n");
+	printf("\t\t\t5ã€æ’åº\n");
+	printf("\t\t\t6ã€ä¿®æ”¹\n");
+	printf("\t\t\t7ã€åˆ é™¤\n");
+	printf("\t\t\t8ã€é€€å‡ºç³»ç»Ÿ\n");
 	getchar();getchar();
 }
 void Insert(List L,People value){
