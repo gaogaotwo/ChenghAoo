@@ -2,68 +2,35 @@
 #include<stdlib.h>
 #include<string.h>
 int main(){
-/*------------------------------------------------------------*/
-//{ 	//Ò»Î¬ĞòÁĞ ¶¯Ì¬·ÖÅäÄÚ´æ  ³õÊ¼»¯
-// 
-///* 	 
-//  calloc malloc ¶¼ÊÇ¸ø ¿ÕÖ¸Õë ·ÖÅäÄÚ´æ Çø±ğcalloc Ä¬ÈÏ»á½«Öµ ÉèÎª 0     
-//*/		 
-//	int Len=6;
-//	int *array=(int *)malloc(sizeof(int)*Len);
-//	memset(array,0,sizeof(int)*Len);
-///*int *array=(int *)calloc(Len,sizeof(int));*/	
-//	for(int i=0;i<Len;i++){
-//		printf("%d ",array[i]);
-//	} 
-//} 
-/*------------------------------------------------------------*/
-//printf("\n");
-//{
-//	//¶şÎ¬ĞòÁĞ  ¶¯Ì¬·ÖÅäÄÚ´æ ³õÊ¼»¯ 
-//	int Len=6;		
-//	int **Array=(int**)malloc(sizeof(int*)*Len);		
-//	for(int i=0;i<Len;i++){	
-//		Array[i]=(int*)calloc(Len,sizeof(int)); 
-//	}
-//	for(int i=0;i<Len;i++){
-//		for(int j=0;j<Len;j++){
-//			printf("%d ",Array[i][j]);
-//		}
-//		printf("\n");
-//	}
-//	
-//}
-
-
-	int Len=6;
-	int *a=(int *)malloc(sizeof(int)*Len);
-	memset(a,0,sizeof(int)*Len);
-
-	int *b=(int *)realloc(a,sizeof(int)*(Len/2)); //¸øĞòÁĞa  Len /2;	
-	printf("\n*aÊ×µØÖ·%d *bÊ×µØÖ·%d",a,b);
+/* 	 
+ calloc malloc éƒ½æ˜¯ç»™ ç©ºæŒ‡é’ˆ åˆ†é…å†…å­˜ åŒºåˆ«calloc é»˜è®¤ä¼šå°†å€¼ è®¾ä¸º 0     
+*/		 
+	int Len = 6;
+	int *array = (int*)malloc(sizeof(int) * Len);
+	memset(array, 0, sizeof(int) * Len);
+	/*int *array=(int *)calloc(Len,sizeof(int));*/	
+	for(int i = 0; i < Len; i++){
+		printf("%d ",array[i]);
+	} 
 	
+	//äºŒç»´åºåˆ—  åŠ¨æ€åˆ†é…å†…å­˜ åˆå§‹åŒ– 
+	int Len=6;		
+	int **Array=(int**)malloc(sizeof(int*)*Len);		
+	for(int i = 0;i < Len; i++){	
+		Array[i]=(int*)calloc(Len,sizeof(int)); 
+	}
+	for(int i = 0; i < Len; i++){
+		for(int j = 0; j < Len; j++){
+			printf("%d ",Array[i][j]);
+		}
+		printf("\n");
+	}
 	
-	
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
+	int Len = 6;
+	int *a = (int*)malloc(sizeof(int) * Len);
+	memset(a, 0, sizeof(int) * Len);
+	int *b = (int* )realloc(a, sizeof(int) * (Len / 2)); //ç»™åºåˆ—a  Len /2;	
+	printf("\n*aé¦–åœ°å€%d *bé¦–åœ°å€%d",a,b);
 	
 	return 0;
 }
