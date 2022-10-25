@@ -46,7 +46,7 @@ def get_content(url):
     ts_url = zmq7_web + 'storage/videos/' + m3u8_date + '/' + url
     i = 0
     # 超时试错机制
-    while i < 3:
+    while i < 5:
         try:
             ts_content = requests.get(url=ts_url, headers=headers, verify=False, timeout=5).content
             with open('./temp_dir/' + url, 'ab') as f:
@@ -92,10 +92,10 @@ if __name__ == '__main__':
         # 开启线程池
         executor = ThreadPoolExecutor(max_workers=int(thread_nums))
         result = executor.map(get_content, m3u8_url_data)
-        # 视频片段合并
-        file_merging(m3u8_url_data)
         # 关闭线程池
         executor.shutdown(wait=True)
+        # 视频片段合并
+        file_merging(m3u8_url_data)
         end_time = time.time()
         print("视频下载时间 ", end_time - start_time)
     input('退出系统成功!')
