@@ -23,12 +23,14 @@ headers = {
 zmq7_web = ''
 m3u8_date = ''
 
-
 def zmq71_init(zmq7_key):
     # 请求 api_url获取到 m3u8_url的值
     global zmq7_web
     global m3u8_date
-    m3u8_api_url = 'https://a1.zimu73.com/api/resource/get?lang=en&v=' + zmq7_key + '&u=' + zmq7_u + '&fp=' + zmq7_fp
+    m3u8_api_url = 'https://a1.zimu73.com/api/resource/get?lang=en&v=' + str(zmq7_key) + '&u=' + zmq7_u + '&fp=' + zmq7_fp
+    # 请求返回一个空列表
+    if(requests.get(url=m3u8_api_url, headers=headers).json()['data'] == []):
+        return []
     m3u8_l = requests.get(url=m3u8_api_url, headers=headers).json()['data']['v']['l']
     zmq7_web = 'https://ns{}.zmq71.site/'.format(m3u8_l)
     m3u8_url = zmq7_web + requests.get(url=m3u8_api_url, headers=headers).json()['data']['v']['url']
@@ -43,7 +45,6 @@ def zmq71_init(zmq7_key):
     # 正则表达式替换操作
     m3u8_url_data = re.sub('#E.*', '', m3u8_url_data).split()
     return m3u8_url_data
-
 
 def get_content(url):
     ts_url = zmq7_web + 'storage/videos/' + m3u8_date + '/' + url
@@ -68,7 +69,7 @@ def file_merging(m3u8_url_data):
         for ts in m3u8_url_data:
             # 异常捕捉，存在部分子视频片段未成功下载
             try:
-                # 注意文件名称是否符号规范
+                # 注意文件名称是否符号规范,r以二进制的形式打开二进制文件
                 with open('./temp_dir/' + ts, 'rb') as tf:
                     f.write(tf.read())
             except:
@@ -82,14 +83,15 @@ def file_merging(m3u8_url_data):
 if __name__ == '__main__':
     print('zmq7多线程m3u8下载软件')
     urls = []
-	#  注意路径./upload.txt 下需存放视频Key值
-    url_upload = open('./upload.txt', 'w', encoding='utf-8')
+    #  注意路径./upload.txt 下需存放视频Key值
     with open('./zmqurl.txt', encoding = 'utf-8') as f:
         for url in f.read().split('\n'):
             urls.append(url)
 
+    print(urls)
     for url in urls:
         start_time = time.time()
+        url_upload = open('./upload.txt', 'a', encoding='utf-8')
         temp_dir.mkdir(exist_ok=True)
         vedio_dir.mkdir(exist_ok=True)
         # zmq71初始话
@@ -105,6 +107,6 @@ if __name__ == '__main__':
             # # 视频片段合并
             file_merging(m3u8_url_data)
         end_time = time.time()
-        d = url + " 已加载完毕" + " 花费时间: " + str(end_time - start_time) + '\n'
+        d = url + " 已加载完毕" + " 花费时间: " + str(end_time - start_time) + ' s \n'
         url_upload.writelines(d)
-    url_upload.close()
+        url_upload.close()
