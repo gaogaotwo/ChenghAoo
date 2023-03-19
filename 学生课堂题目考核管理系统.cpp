@@ -15,13 +15,13 @@ struct StuScoreNode{
 };
 typedef Node List;
 
-//´´½¨Ñ§ÉúĞÅÏ¢µÄ½á¹¹Ìå
+//åˆ›å»ºå­¦ç”Ÿä¿¡æ¯çš„ç»“æ„ä½“
 int stu1=0;
 void start(){
 	
 	
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-	printf("\t\t\t\t\t\t\t\tÑ§Éú¿ÎÌÃÌâÄ¿¿¼ºË¹ÜÀíÏµÍ³\n");
+	printf("\t\t\t\t\t\t\t\tå­¦ç”Ÿè¯¾å ‚é¢˜ç›®è€ƒæ ¸ç®¡ç†ç³»ç»Ÿ\n");
 	printf("                               			\t	by  ");
 	Sleep(2000);
 	system("cls");
@@ -32,16 +32,16 @@ STUSCORE createStuScore()
 	
 	stu.stuID=++stu1;
 	
-	printf("ÇëÊäÈëÑ§ÉúµÄĞÕÃû:\n");
+	printf("è¯·è¾“å…¥å­¦ç”Ÿçš„å§“å:\n");
 	scanf("%9s",stu.stuName);
 	
-	printf("ÇëÊäÈëÑ§ÉúµÄ³É¼¨:\n");
+	printf("è¯·è¾“å…¥å­¦ç”Ÿçš„æˆç»©:\n");
 	scanf("%d",&stu.grade);
 	
 	return stu;
 
 }
-//´´½¨Ò»¸öÑ§ÉúĞÅÏ¢½Úµã
+//åˆ›å»ºä¸€ä¸ªå­¦ç”Ÿä¿¡æ¯èŠ‚ç‚¹
 List addStuScoreNode()
 {
 	List assn;
@@ -51,7 +51,7 @@ List addStuScoreNode()
 	return assn;
 }
 
-//½«Ò»¸ö½ÚµãÌí¼Óµ½ÁĞ±íÖĞÈ¥£¬·µ»ØÁĞ±íµÄÍ·Ö¸Õë
+//å°†ä¸€ä¸ªèŠ‚ç‚¹æ·»åŠ åˆ°åˆ—è¡¨ä¸­å»ï¼Œè¿”å›åˆ—è¡¨çš„å¤´æŒ‡é’ˆ
 List addToList(List list,List stunode)
 {
 	stunode->NEXT=list;
@@ -59,18 +59,18 @@ List addToList(List list,List stunode)
 	return list;
 }
 
-//ÏÔÊ¾ĞÅÏ¢
+//æ˜¾ç¤ºä¿¡æ¯
 void showOneInfo2(STUSCORE ss)
 {
 		printf("%8d%8s%8d\n",ss.stuID,ss.stuName,ss.grade);
 }
 
-//ÏÔÊ¾ËùÓĞÑ§ÉúĞÅÏ¢
+//æ˜¾ç¤ºæ‰€æœ‰å­¦ç”Ÿä¿¡æ¯
 void showAllInfo(List list)
 {
 	List  p;
 	p=list;
-	printf("%8s%8s%8s\n","ĞòºÅ","ĞÕÃû","³É¼¨");
+	printf("%8s%8s%8s\n","åºå·","å§“å","æˆç»©");
 
 	while(p!=NULL)
 	{
@@ -80,19 +80,19 @@ void showAllInfo(List list)
 	
 }
 
-//²éÑ¯³É¼¨º¯Êı
+//æŸ¥è¯¢æˆç»©å‡½æ•°
 void find_stu(List head)
 {
 	int i;
 	List cha;
 	cha=head;
-	printf("ÇëÊäÈëÒª²éÑ¯³É¼¨Ñ§ÉúµÄĞòºÅ\n");
+	printf("è¯·è¾“å…¥è¦æŸ¥è¯¢æˆç»©å­¦ç”Ÿçš„åºå·\n");
 	scanf("%d",&i);
 	while(cha!=NULL)
 	{
 		if(i==cha->stu.stuID)
 		{
-			printf("%8s%8s%8s\n","ĞòºÅ","ĞÕÃû","³É¼¨");
+			printf("%8s%8s%8s\n","åºå·","å§“å","æˆç»©");
 			showOneInfo2(cha->stu);
 		}
 		cha=cha->NEXT;
@@ -104,7 +104,7 @@ void extract_number(List L){
 	
 	x=rand() %stu1+1;
 	
-	printf("ÇëÊäÈë%dÍ¬Ñ§»ñµÃµÄ·ÖÊı\n",x);
+	printf("è¯·è¾“å…¥%dåŒå­¦è·å¾—çš„åˆ†æ•°\n",x);
     while(L!=NULL){
     	
         if(x==L->stu.stuID){
@@ -119,11 +119,11 @@ void extract_number1(List L){
 	
 	char a[100];
     int garde1;
-    printf("ÇëÊäÈë³éÈ¡Í¬Ñ§ĞÕÃû\n");
+    printf("è¯·è¾“å…¥æŠ½å–åŒå­¦å§“å\n");
     scanf("%s",a);
     while(L!=NULL){
         if(strcmp(a,L->stu.stuName)==0){
-            printf("ÇëÊäÈë%sÍ¬Ñ§»ñµÃµÄ·ÖÊı\n",a);
+            printf("è¯·è¾“å…¥%såŒå­¦è·å¾—çš„åˆ†æ•°\n",a);
             scanf("%d",&garde1);
             L->stu.grade=L->stu.grade+garde1;
             break;
@@ -135,27 +135,27 @@ int main()
 {
 	system("color 8E");
 	start();
-	List list=NULL,node;//listÊÇÁĞ±íµÄÍ·Ö¸Õë£¬nodeÎªµ¥½ÚµãµÄÖ¸Õë
-	int choice;//choiceÊÇÒªÑ¡ÔñµÄ·şÎñÊı×Ö
-	while(1)//ÈÃ³ÌĞòÒ»Ö±Ñ­»·
+	List list=NULL,node;//listæ˜¯åˆ—è¡¨çš„å¤´æŒ‡é’ˆï¼Œnodeä¸ºå•èŠ‚ç‚¹çš„æŒ‡é’ˆ
+	int choice;//choiceæ˜¯è¦é€‰æ‹©çš„æœåŠ¡æ•°å­—
+	while(1)//è®©ç¨‹åºä¸€ç›´å¾ªç¯
 	{
 		system("cls");
 		printf("\n\n\n\n\n");
 		printf("\t\t\t\t-----------------------------------\n");
-		printf("\t\t\t\tÑ§Éú¿ÎÌÃÌâÄ¿¿¼ºË¹ÜÀíÏµÍ³\n");
-        printf("\t\t\t\t1£ºÌí¼ÓĞÅÏ¢  \n");
-		printf("\t\t\t\t2£ºËæ»úĞÔµÄ³éºÅ  \n");
-		printf("\t\t\t\t3£ºÖ¸Ã÷µÀĞÕµØÌáÎÊ\n");
-		printf("\t\t\t\t4£º²éÑ¯Ñ§Éú³É¼¨,°´ĞòºÅ²éÑ¯\n");
-		printf("\t\t\t\t5£º²éÑ¯È«ÌåÑ§Éú³É¼¨\n");
-		printf("\t\t\t\t6£ºÍË³öÏµÍ³\n");
+		printf("\t\t\t\tå­¦ç”Ÿè¯¾å ‚é¢˜ç›®è€ƒæ ¸ç®¡ç†ç³»ç»Ÿ\n");
+        printf("\t\t\t\t1ï¼šæ·»åŠ ä¿¡æ¯  \n");
+		printf("\t\t\t\t2ï¼šéšæœºæ€§çš„æŠ½å·  \n");
+		printf("\t\t\t\t3ï¼šæŒ‡æ˜é“å§“åœ°æé—®\n");
+		printf("\t\t\t\t4ï¼šæŸ¥è¯¢å­¦ç”Ÿæˆç»©,æŒ‰åºå·æŸ¥è¯¢\n");
+		printf("\t\t\t\t5ï¼šæŸ¥è¯¢å…¨ä½“å­¦ç”Ÿæˆç»©\n");
+		printf("\t\t\t\t6ï¼šé€€å‡ºç³»ç»Ÿ\n");
 		printf("\t\t\t\t-----------------------------------\n");
-		printf("ÊäÈëÑ¡Ïî´úÂë:");
+		printf("è¾“å…¥é€‰é¡¹ä»£ç :");
 		scanf("%d",&choice);
 
 		switch(choice)
 		{
-		case 1://Ìí¼ÓÑ§ÉúĞÅÏ¢
+		case 1://æ·»åŠ å­¦ç”Ÿä¿¡æ¯
 				node=addStuScoreNode();
 				list=addToList(list,node);
 				getchar();
@@ -170,7 +170,7 @@ int main()
 		
 
 		case 6:
-		printf("Ğ»Ğ»ÄãµÄÊ¹ÓÃ~~"); 
+		printf("è°¢è°¢ä½ çš„ä½¿ç”¨~~"); 
 		exit(0);
 		break; 
 
