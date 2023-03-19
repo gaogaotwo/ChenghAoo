@@ -1,4 +1,4 @@
-/*ÕâÊÇÎÒÔÚgithubÖĞÕÒµ½µÄc++Í¨Ñ¶Â¼£¬¾­¹ıÎÒµÄ²âÊÔÊÇ¿ÉÒÔÍêÈ«Ê¹ÓÃµÄ    Õâ¸öÊÇ×÷Õßqq£º248620932£¬ID:¹û¶³£¬»¶Ó­½»Á÷*/ 
+/*è¿™æ˜¯æˆ‘åœ¨githubä¸­æ‰¾åˆ°çš„c++é€šè®¯å½•ï¼Œç»è¿‡æˆ‘çš„æµ‹è¯•æ˜¯å¯ä»¥å®Œå…¨ä½¿ç”¨çš„    è¿™ä¸ªæ˜¯ä½œè€…qqï¼š248620932ï¼ŒID:æœå†»ï¼Œæ¬¢è¿äº¤æµ*/ 
 
 #ifndef __CONTACT_H__
 #define __CONTACT_H__
@@ -7,57 +7,57 @@
 #include <assert.h>
 #include <string.h>
 #pragma warning(disable:4996)
-#define INITCAP 128//³õÊ¼»¯³¤¶È
-#define INCREMENT 32//×ÔÔö³¤¶È
+#define INITCAP 128//åˆå§‹åŒ–é•¿åº¦
+#define INCREMENT 32//è‡ªå¢é•¿åº¦
 #define FILE_NAME "contact_back"
-//ÉùÃ÷£º
-//ÁªÏµÈË½á¹¹Ìå
+//å£°æ˜ï¼š
+//è”ç³»äººç»“æ„ä½“
 typedef struct person{
-	char name[32];//ĞÕÃû ĞÔ±ğ ÄêÁä µç»° µØÖ·
+	char name[32];//å§“å æ€§åˆ« å¹´é¾„ ç”µè¯ åœ°å€
 	char sex[8];
 	unsigned char age;
 	char phone[16];
 	char adds[64];
 }person_t, *person_p, **person_pp;
 
-//Í¨Ñ¶Â¼½á¹¹Ìå
+//é€šè®¯å½•ç»“æ„ä½“
 typedef struct contact{
-	int cap;				//×î´ó³¤¶È
-	int size;				//µ±Ç°³¤¶È
-	person_p contactList;	//ÁªÏµÈËÁĞ±í
+	int cap;				//æœ€å¤§é•¿åº¦
+	int size;				//å½“å‰é•¿åº¦
+	person_p contactList;	//è”ç³»äººåˆ—è¡¨
 }contact_t, *contact_p, **contact_pp;
 
-//º¯ÊıÉùÃ÷
-void initContact(contact_pp c);//³õÊ¼»¯Í¨Ñ¶Â¼
-void addContact(contact_p c, person_p p);//Ìí¼ÓÁªÏµÈË
-void showContact(contact_p c);//´òÓ¡ÁªÏµÈËÁĞ±í
-void delContact(contact_p c, char *del_name);//É¾³ı
-void emptyContact(contact_p c);//Çå¿Õ
-void destroyContact(contact_p c);//´İ»ÙÍ¨Ñ¶Â¼
-int  searchContact(contact_p c, char *search_name);//²éÕÒ
-void sortContact(contact_p c);//ÅÅĞò
-void modContact(contact_p c);//ĞŞ¸Ä
-void helpContact();//°ïÖú
-void exitContact(contact_p c);//ÍË³ö
-int  isContactEmpty(contact_p c);//ÅĞ¿Õ
-int fileLoad(contact_p c);//ÏÂÔØµ½ÏîÄ¿
-int fileStore(contact_p c);//´¢´æµ½ÎÄ¼ş
+//å‡½æ•°å£°æ˜
+void initContact(contact_pp c);//åˆå§‹åŒ–é€šè®¯å½•
+void addContact(contact_p c, person_p p);//æ·»åŠ è”ç³»äºº
+void showContact(contact_p c);//æ‰“å°è”ç³»äººåˆ—è¡¨
+void delContact(contact_p c, char *del_name);//åˆ é™¤
+void emptyContact(contact_p c);//æ¸…ç©º
+void destroyContact(contact_p c);//æ‘§æ¯é€šè®¯å½•
+int  searchContact(contact_p c, char *search_name);//æŸ¥æ‰¾
+void sortContact(contact_p c);//æ’åº
+void modContact(contact_p c);//ä¿®æ”¹
+void helpContact();//å¸®åŠ©
+void exitContact(contact_p c);//é€€å‡º
+int  isContactEmpty(contact_p c);//åˆ¤ç©º
+int fileLoad(contact_p c);//ä¸‹è½½åˆ°é¡¹ç›®
+int fileStore(contact_p c);//å‚¨å­˜åˆ°æ–‡ä»¶
 #endif __CONTACT_H__ 
-//²Ëµ¥
+//èœå•
 static void meun(){
 	printf("\n");
 	printf("Welcome...\n");
 	printf("-----------------------------------  CONTACTS  --------------------------------\n");
-	printf("--           1.Ìí¼ÓĞÅÏ¢                           2.É¾³ıĞÅÏ¢                 --\n");
-	printf("--           3.ËÑË÷ĞÅÏ¢                           4.±à¼­ĞÅÏ¢                 --\n");
-	printf("--           5.Õ¹Ê¾ĞÅÏ¢                           6.Çå¿ÕĞÅÏ¢                 --\n");
-	printf("--           7.ÅÅĞòĞÅÏ¢                           8.°ïÖú                     --\n");
-	printf("--           0.ÍË³öÏµÍ³                                                      --\n");
+	printf("--           1.æ·»åŠ ä¿¡æ¯                           2.åˆ é™¤ä¿¡æ¯                 --\n");
+	printf("--           3.æœç´¢ä¿¡æ¯                           4.ç¼–è¾‘ä¿¡æ¯                 --\n");
+	printf("--           5.å±•ç¤ºä¿¡æ¯                           6.æ¸…ç©ºä¿¡æ¯                 --\n");
+	printf("--           7.æ’åºä¿¡æ¯                           8.å¸®åŠ©                     --\n");
+	printf("--           0.é€€å‡ºç³»ç»Ÿ                                                      --\n");
 	printf("-------------------------------------------------------------------------------\n");
 	printf("\n");
 }
 
-//Ìí¼Ó
+//æ·»åŠ 
 static void myAdd(contact_p c){
 	person_t p;
 
@@ -68,7 +68,7 @@ static void myAdd(contact_p c){
 	addContact(c, &p);
 }
 
-//É¾³ı
+//åˆ é™¤
 static void myDel(contact_p c){
 	char del_name[32];
 	int n = 0;
@@ -100,12 +100,12 @@ static void myDel(contact_p c){
 		}
 		else
 		{
-			printf("Error £¡ \n");
+			printf("Error ï¼ \n");
 		}
 	}
 	
 }
-//²éÕÒ
+//æŸ¥æ‰¾
 static void mySearch(contact_p c)
 {
 	char search_name[32];
@@ -137,10 +137,10 @@ static void mySearch(contact_p c)
 }
 int main()
 {
-	int s = -1;//Ñ¡Ôñ¿ØÖÆ±äÁ¿
-	contact_p myContact = NULL;//ÉùÃ÷Í¨Ñ¶Â¼
+	int s = -1;//é€‰æ‹©æ§åˆ¶å˜é‡
+	contact_p myContact = NULL;//å£°æ˜é€šè®¯å½•
 	system("color 2");
-	initContact(&myContact);//³õÊ¼»¯
+	initContact(&myContact);//åˆå§‹åŒ–
 	while(1){ 
 		meun();
 		printf("Please select<0~7>:");
@@ -148,52 +148,52 @@ int main()
 		scanf("%d", &s);
 		switch(s){
 		case 1:system("cls");
-			myAdd(myContact);//Ìí¼ÓÁªÏµÈË
+			myAdd(myContact);//æ·»åŠ è”ç³»äºº
 			system("pause");
 			break;
 		case 2:system("cls");
-			myDel(myContact);//É¾³ıÁªÏµÈË
+			myDel(myContact);//åˆ é™¤è”ç³»äºº
 			system("pause");
 			break;
 		case 3:system("cls");
-			mySearch(myContact);//²éÕÒ²¢´òÓ¡ÁªÏµÈË
+			mySearch(myContact);//æŸ¥æ‰¾å¹¶æ‰“å°è”ç³»äºº
 			system("pause");
 			break;
 		case 4:system("cls");
-			modContact(myContact);//ĞŞ¸ÄÁªÏµÈË
+			modContact(myContact);//ä¿®æ”¹è”ç³»äºº
 			system("pause");
 			break;
 		case 5:system("cls");
-			showContact(myContact);//ÏÔÊ¾ÁªÏµÈËÁĞ±í
+			showContact(myContact);//æ˜¾ç¤ºè”ç³»äººåˆ—è¡¨
 			system("pause");
 			break;
 		case 6:system("cls");
-			emptyContact(myContact);//Çå¿ÕÍ¨Ñ¶Â¼
+			emptyContact(myContact);//æ¸…ç©ºé€šè®¯å½•
 			system("pause");
 			break;
 		case 7:system("cls");
-			sortContact(myContact);//ÅÅĞòÍ¨Ñ¶Â¼
+			sortContact(myContact);//æ’åºé€šè®¯å½•
 			system("pause");
 			break;
 		case 8:system("cls");
-			helpContact();//°ïÖú
+			helpContact();//å¸®åŠ©
 			system("pause");
 			break;
 		case 0:system("cls");
-			exitContact(myContact);//ÍË³ö
+			exitContact(myContact);//é€€å‡º
 			break;
-		default:printf("ERROR SELECTION !!!\n");//´íÎóÑ¡Ôñ
+		default:printf("ERROR SELECTION !!!\n");//é”™è¯¯é€‰æ‹©
 			system("pause");
 			break;
 		}
-		system("cls");//ÇåÆÁ
+		system("cls");//æ¸…å±
 	}
 
 	return 0;
 }
-//ÅĞ¿Õ
-//¿Õ£º1
-//²»¿Õ£º0
+//åˆ¤ç©º
+//ç©ºï¼š1
+//ä¸ç©ºï¼š0
 int isContactEmpty(contact_p c)
 {
 	assert(c);
@@ -201,33 +201,33 @@ int isContactEmpty(contact_p c)
 	return c->size == 0 ? 1 : 0;
 }
 
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 void initContact(contact_pp c)
 {
 	assert(c);
 
-	//ÉêÇëÍ¨Ñ¶Â¼¿Õ¼ä
+	//ç”³è¯·é€šè®¯å½•ç©ºé—´
 	*c = (contact_p)malloc(sizeof(contact_t));
 	if(NULL == *c){
 		perror("malloc");
 		exit(1);
 	}
 
-	//ÉêÇë³ÉÔ±¿Õ¼ä
+	//ç”³è¯·æˆå‘˜ç©ºé—´
 	(*c)->contactList = (person_p)malloc(sizeof(person_t)*INITCAP);
 	if(NULL == (*c)->contactList){
 		perror("malloc");
 		exit(2);
 	}
 
-	//³õÊ¼»¯³¤¶ÈºÍÈİÁ¿
+	//åˆå§‹åŒ–é•¿åº¦å’Œå®¹é‡
 	(*c)->cap = INITCAP;
 	(*c)->size = 0;
 
 	fileLoad(*c);
 }
 
-//´ÓÎÄ¼ş¶ÁÈ¡Í¨Ñ¶Â¼ĞÅÏ¢
+//ä»æ–‡ä»¶è¯»å–é€šè®¯å½•ä¿¡æ¯
 int fileLoad(contact_p c)
 {
 	FILE *fp;
@@ -236,7 +236,7 @@ int fileLoad(contact_p c)
 
 	assert(c);
 
-	//´ò¿ªÎÄ¼ş
+	//æ‰“å¼€æ–‡ä»¶
 	fp = fopen(FILE_NAME,"rb");
 	if(NULL == fp){
 		perror("fopen");
@@ -244,12 +244,12 @@ int fileLoad(contact_p c)
 	}
 
 	while(1){
-		//¶ÁÈ¡µ½p
+		//è¯»å–åˆ°p
 		fread(&p, sizeof(person_t), 1, fp);
 		if(0 != feof(fp)){
 			break;
 		}
-		//½«¶ÁÈ¡µÄÌí¼Óµ½Í¨Ñ¶Â¼
+		//å°†è¯»å–çš„æ·»åŠ åˆ°é€šè®¯å½•
 		addContact(c, &p);
 	}
 	fclose(fp);
@@ -258,9 +258,9 @@ int fileLoad(contact_p c)
 }
 
 
-//ÅĞÂú
-//Âú£º1 
-//Î´Âú£º0
+//åˆ¤æ»¡
+//æ»¡ï¼š1 
+//æœªæ»¡ï¼š0
 static int isContactFull(contact_p c)
 {
 	assert(c);
@@ -269,43 +269,43 @@ static int isContactFull(contact_p c)
 }
 
 
-//×ÔÔö
+//è‡ªå¢
 static int incContact(contact_p c)
 {
 	person_p new_c = NULL;
 
 	assert(c);
 
-	//ÉêÇëĞÂ¿Õ¼ä
+	//ç”³è¯·æ–°ç©ºé—´
 	new_c = (person_p)realloc(c->contactList, (c->cap+INCREMENT)*sizeof(person_t));
 	if(NULL == new_c){
 		perror("realloc");
 		return 0;
 	}
 	
-	//½«ĞÂ¿Õ¼ä·ÖÅä¸ø¾É¿Õ¼ä
+	//å°†æ–°ç©ºé—´åˆ†é…ç»™æ—§ç©ºé—´
 	c->contactList = new_c;
 	c->cap += INCREMENT;
 	printf("Is full, increse success!\n");
 	return 1;
 }
 
-//Ìí¼ÓÁªÏµÈË
+//æ·»åŠ è”ç³»äºº
 void addContact(contact_p c, person_p p)
 {
 	assert(c);
 	assert(p);
 
-	//Èç¹û²»¿ÕÖ±½ÓÌí¼Ó£¬Èç¹û¿Õ¾ÍÏÈ×ÔÔöÔÙÌí¼Ó
+	//å¦‚æœä¸ç©ºç›´æ¥æ·»åŠ ï¼Œå¦‚æœç©ºå°±å…ˆè‡ªå¢å†æ·»åŠ 
 	if(!isContactFull(c) || incContact(c)){
 		c->contactList[c->size] = *p;
 		c->size++;
 	}
 }
-//²éÕÒ
-//ÊÇ¿ÕµÄ£º´òÓ¡¿Õ
-//Ã»ÕÒµ½£º·µ»Ø -1
-//ÕÒµ½£º·µ»ØÏÂ±ê
+//æŸ¥æ‰¾
+//æ˜¯ç©ºçš„ï¼šæ‰“å°ç©º
+//æ²¡æ‰¾åˆ°ï¼šè¿”å› -1
+//æ‰¾åˆ°ï¼šè¿”å›ä¸‹æ ‡
 int searchContact(contact_p c, char *search_name)
 {
 	int i = 0;
@@ -313,7 +313,7 @@ int searchContact(contact_p c, char *search_name)
 	assert(c);
 	assert(search_name);
 
-	//Í¨Ñ¶Â¼ÊÇ¿ÕµÄ
+	//é€šè®¯å½•æ˜¯ç©ºçš„
 	if(isContactEmpty(c)){
 		printf("Contact is empty!\n");
 	}
@@ -324,20 +324,20 @@ int searchContact(contact_p c, char *search_name)
 		}
 	}
 
-	//Ã»ÕÒµ½
+	//æ²¡æ‰¾åˆ°
 	if(i == c->size)
 	{
 		return -1;
 	}
 
-	//ÕÒµ½·µ»ØÏÂ±ê
+	//æ‰¾åˆ°è¿”å›ä¸‹æ ‡
 	return i;
 
 
 }
 
 
-//°´Ãû×ÖÅÅĞò
+//æŒ‰åå­—æ’åº
 void sortContact(contact_p c)
 {
 	int i = 0;
@@ -347,13 +347,13 @@ void sortContact(contact_p c)
 
 	assert(c);
 
-	//ÊÇ¿ÕµÄ¾Í²»ÓÃÅÅ
+	//æ˜¯ç©ºçš„å°±ä¸ç”¨æ’
 	if(isContactEmpty(c)){
 		printf("Contact is empty!\n");
 		return ;
 	}
 
-	//²»¿ÕÓÃÃ°Åİ·¨°´Ãû×ÖÅÅĞò
+	//ä¸ç©ºç”¨å†’æ³¡æ³•æŒ‰åå­—æ’åº
 	for(i = c->size-1; i>0; i--){
 		for(j = 0; j<i; j++){
 			if(1 == strcmp(c->contactList[j].name, c->contactList[j+1].name)){
@@ -373,7 +373,7 @@ void sortContact(contact_p c)
 	printf("Done...\n");
 }
 
-//ĞŞ¸ÄÁªÏµÈË
+//ä¿®æ”¹è”ç³»äºº
 void modContact(contact_p c)
 {
 	char name[32];
@@ -388,11 +388,11 @@ void modContact(contact_p c)
 		return ;
 	}
 
-	//ÊäÈëÒªĞŞ¸ÄµÄÈËµÄÃû×Ö
+	//è¾“å…¥è¦ä¿®æ”¹çš„äººçš„åå­—
 	printf("Please input the name whicth you want to modify:");
 	scanf("%s", name);
 
-	//²éÕÒÒªĞŞ¸ÄÈËµÄÏÂ±ê
+	//æŸ¥æ‰¾è¦ä¿®æ”¹äººçš„ä¸‹æ ‡
 	i = searchContact(c, name);
 	if(-1 == i)
 	{
@@ -400,7 +400,7 @@ void modContact(contact_p c)
 		return ;
 	}
 
-	//´òÓ¡ĞÅÏ¢
+	//æ‰“å°ä¿¡æ¯
 	printf("------------------------------------------------------------------------------\n");
 	printf("| name      | sex  | age | phone           | adds                            |\n");
 	printf("| %-10s| %-5s| %-4d| %-16s| %-32s|\n",c->contactList[i].name, \
@@ -408,23 +408,23 @@ void modContact(contact_p c)
 	c->contactList[i].phone,c->contactList[i].adds);
 	printf("------------------------------------------------------------------------------\n");
 
-	//ÊäÈëÒªĞŞ¸ÄµÄ¹Ø¼ü×Ö
+	//è¾“å…¥è¦ä¿®æ”¹çš„å…³é”®å­—
 	printf("Please input the infor whicth you want to modify:");
 	fflush(stdin);
 	scanf("%s", key_mod);
 	
-	//Ñ°ÕÒÒªĞŞ¸ÄµÄ¹Ø¼ü×Ö
+	//å¯»æ‰¾è¦ä¿®æ”¹çš„å…³é”®å­—
 
-	//Èç¹ûÒªĞŞ¸ÄÃû×Ö
+	//å¦‚æœè¦ä¿®æ”¹åå­—
 	if(0 == strcmp("name", key_mod)){
 		printf("Please input new name:");
-		fflush(stdin);//×¢ÒâÒªÇå¿ÕÊäÈë»º³åÇø
+		fflush(stdin);//æ³¨æ„è¦æ¸…ç©ºè¾“å…¥ç¼“å†²åŒº
 		scanf("%s", c->contactList[i].name);
 		printf("Done...\n");
 		return ;
 	}
 
-	//Èç¹ûÒªĞŞ¸ÄĞÔ±ğ
+	//å¦‚æœè¦ä¿®æ”¹æ€§åˆ«
 	if(0 == strcmp("sex", key_mod)){
 		printf("Please input new sex:");
 		fflush(stdin);
@@ -433,7 +433,7 @@ void modContact(contact_p c)
 		return ;
 	}
 
-	//Èç¹ûÒªĞŞ¸ÄÄêÁä
+	//å¦‚æœè¦ä¿®æ”¹å¹´é¾„
 	if(0 == strcmp("age", key_mod)){
 		printf("Please input new age:");
 		fflush(stdin);
@@ -442,7 +442,7 @@ void modContact(contact_p c)
 		return ;
 	}
 
-	//Èç¹ûÒªĞŞ¸Äµç»°ºÅÂë
+	//å¦‚æœè¦ä¿®æ”¹ç”µè¯å·ç 
 	if(0 == strcmp("phone", key_mod)){
 		printf("Please input new phone:");
 		fflush(stdin);
@@ -451,7 +451,7 @@ void modContact(contact_p c)
 		return ;
 	}
 
-	//Èç¹ûÒªĞŞ¸ÄµØÖ·
+	//å¦‚æœè¦ä¿®æ”¹åœ°å€
 	if(0 == strcmp("adds", key_mod)){
 		printf("Please input new adds:");
 		fflush(stdin);
@@ -460,11 +460,11 @@ void modContact(contact_p c)
 		return ;
 	}
 	
-	//Ã»ÓĞÕÒµ½ÒªĞŞ¸ÄµÄ¹Ø¼ü×Ö
+	//æ²¡æœ‰æ‰¾åˆ°è¦ä¿®æ”¹çš„å…³é”®å­—
 	printf("ERROR!!\n");
 }
 
-//É¾³ı
+//åˆ é™¤
 void delContact(contact_p c, char *del_name)
 {
 	int i = 0;
@@ -478,7 +478,7 @@ void delContact(contact_p c, char *del_name)
 		return ;
 	}
 	
-	//½«ºóÃæµÄ³ÉÔ±Ç°ÒÆ
+	//å°†åé¢çš„æˆå‘˜å‰ç§»
 	for(j = i;j<c->size; j++){
 		c->contactList[j] = c->contactList[j+1];
 	}
@@ -487,17 +487,17 @@ void delContact(contact_p c, char *del_name)
 	printf("Done...\n");
 }
 
-//Çå¿ÕÍ¨Ñ¶Â¼
+//æ¸…ç©ºé€šè®¯å½•
 void emptyContact(contact_p c)
 {
 	assert(c);
 
-	//Ö±½Ó½«µ±Ç°´óĞ¡ÖÃ0
+	//ç›´æ¥å°†å½“å‰å¤§å°ç½®0
 	c->size = 0;
 	printf("Done...\n");
 }
 
-//´òÓ¡ĞÅÏ¢
+//æ‰“å°ä¿¡æ¯
 void showContact(contact_p c)
 {
 	int i = 0;
@@ -509,9 +509,9 @@ void showContact(contact_p c)
 		return ;
 	}
 
-	printf("\ntotal:%d\n", c->size);//´òÓ¡×ÜÈËÊı
+	printf("\ntotal:%d\n", c->size);//æ‰“å°æ€»äººæ•°
 
-	//´òÓ¡ÏêÏ¸ĞÅÏ¢
+	//æ‰“å°è¯¦ç»†ä¿¡æ¯
 	printf("------------------------------- contacts -------------------------------------\n");
 	printf("| name      | sex  | age | phone           | adds                            |\n");
 	printf("------------------------------------------------------------------------------\n");
@@ -523,25 +523,25 @@ void showContact(contact_p c)
 	printf("------------------------------------------------------------------------------\n\n");
 }
  
-//°ïÖú£¨Ê¹ÓÃÊÖ²á£©
+//å¸®åŠ©ï¼ˆä½¿ç”¨æ‰‹å†Œï¼‰
 void helpContact()
 {
 	printf("\n");
 	printf("-----------------------------------  HELP  -----------------------------------\n");
 	printf("| You could use this app store up some information about your friends.       |\n");
-	printf("| 1¡¢you can add information by choose ( 1 ).                                |\n");
-	printf("| 2¡¢you can delect someone by choose ( 2 ).                                 |\n");
-	printf("| 3¡¢you can search someone by choose ( 3 ).                                 |\n");
-	printf("| 4¡¢you can change some's information by choose ( 4 ).                      |\n");
-	printf("| 5¡¢you can show information list by choose ( 5 ).                          |\n");
-	printf("| 6¡¢you can empty all information by choose ( 6 ).                          |\n");
-	printf("| 7¡¢you can sort people by choose ( 7 ).                                    |\n");
+	printf("| 1ã€you can add information by choose ( 1 ).                                |\n");
+	printf("| 2ã€you can delect someone by choose ( 2 ).                                 |\n");
+	printf("| 3ã€you can search someone by choose ( 3 ).                                 |\n");
+	printf("| 4ã€you can change some's information by choose ( 4 ).                      |\n");
+	printf("| 5ã€you can show information list by choose ( 5 ).                          |\n");
+	printf("| 6ã€you can empty all information by choose ( 6 ).                          |\n");
+	printf("| 7ã€you can sort people by choose ( 7 ).                                    |\n");
 	printf("------------------------------------------------------------------------------\n\n");
 }
 
 
 
-//´¢´æµ½ÎÄ¼ş
+//å‚¨å­˜åˆ°æ–‡ä»¶
 int fileStore(contact_p c)
 {
 	FILE *fp;
@@ -549,14 +549,14 @@ int fileStore(contact_p c)
 
 	assert(c);
 
-	//´ò¿ªÎÄ¼ş
+	//æ‰“å¼€æ–‡ä»¶
 	fp = fopen(FILE_NAME,"wb");
 	if(NULL == fp){
 		perror("fopen");
 		return -1;
 	}
 
-	//Ò»´Î´¢´æÒ»¸öÈË´óĞ¡µÄÄÚÈİ
+	//ä¸€æ¬¡å‚¨å­˜ä¸€ä¸ªäººå¤§å°çš„å†…å®¹
 	for(; i<c->size; i++){
 		fwrite(c->contactList+i, sizeof(person_t), 1, fp);
 	}
@@ -566,19 +566,19 @@ int fileStore(contact_p c)
 	return 0;
 }
 
-//´İ»ÙÍ¨Ñ¶Â¼
+//æ‘§æ¯é€šè®¯å½•
 void destroyContact(contact_p c)
 {
 	assert(c);
 
 	fileStore(c);
-	free(c->contactList);//ÊÍ·Å³ÂÑà
+	free(c->contactList);//é‡Šæ”¾é™ˆç‡•
 	c->contactList = NULL;
-	free(c);//ÊÍ·ÅÕûÌå
+	free(c);//é‡Šæ”¾æ•´ä½“
 	c = NULL;
 }
 
-//ÍË³ö
+//é€€å‡º
 void exitContact(contact_p c)
 {
 	int n = 0;
@@ -601,7 +601,7 @@ void exitContact(contact_p c)
 		}
 		else
 		{
-			printf("Error £¡ \n");
+			printf("Error ï¼ \n");
 		}
 	}
 	
